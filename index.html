@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ronald Rotich | The Architecture of Human Potential</title>
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            black: '#070707',
+                            dark: '#0f0a14',
+                            purple: '#4B0082',
+                            lightpurple: '#7e22ce',
+                            accent: '#c084fc'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                        serif: ['Cormorant Garamond', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #070707; color: #f3f4f6; }
+        
+        /* The Architecture Vector Grid */
+        .vector-grid {
+            background-image: 
+                linear-gradient(rgba(192, 132, 252, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(192, 132, 252, 0.05) 1px, transparent 1px);
+            background-size: 60px 60px;
+            background-position: center center;
+        }
+
+        .text-gradient { background: linear-gradient(135deg, #c084fc 0%, #7e22ce 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .glass-nav { background: rgba(7, 7, 7, 0.85); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(192, 132, 252, 0.15); }
+        
+        /* Premium Outlined Cards */
+        .glass-card { 
+            background: rgba(255, 255, 255, 0.02); 
+            border: 1px solid rgba(192, 132, 252, 0.15); 
+            transition: all 0.4s ease; 
+            box-shadow: inset 0 0 20px rgba(75, 0, 130, 0.05);
+        }
+        .glass-card:hover { 
+            border-color: rgba(192, 132, 252, 0.5); 
+            transform: translateY(-4px); 
+            background: rgba(192, 132, 252, 0.05);
+            box-shadow: 0 10px 30px -10px rgba(75, 0, 130, 0.3);
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-brand-purple selection:text-white">
+
+    <nav class="fixed w-full z-50 glass-nav transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            
+            <a href="#" class="flex items-center gap-3 group">
+                <img src="assets/logo.png" alt="Ronald Rotich Logo" class="h-10 w-auto group-hover:opacity-80 transition">
+                <span class="font-serif text-2xl font-bold tracking-wide text-white hidden sm:block">Ronald Rotich</span>
+            </a>
+            
+            <div class="hidden md:flex space-x-10 items-center text-xs font-semibold tracking-[0.15em] text-gray-300 uppercase">
+                <a href="#about" class="hover:text-brand-accent transition">About</a>
+                <a href="#work" class="hover:text-brand-accent transition">Work With Me</a>
+                <a href="#work" class="hover:text-brand-accent transition">Speaking</a>
+                <a href="#lampstand" class="hover:text-brand-accent transition flex items-center gap-2">
+                    <i class="fa-solid fa-bolt text-brand-purple"></i> My Lampstand
+                </a>
+            </div>
+
+            <a href="mailto:info@ronaldrotich.com" class="hidden md:inline-block bg-brand-purple hover:bg-brand-lightpurple text-white px-7 py-3 rounded-sm text-xs font-bold tracking-widest uppercase transition border border-brand-lightpurple/50 shadow-[0_0_15px_rgba(75,0,130,0.5)]">
+                Book a Call
+            </a>
+        </div>
+    </nav>
+
+    <section class="relative min-h-screen flex flex-col justify-center pt-32 pb-16 overflow-hidden vector-grid">
+        <div class="absolute top-1/4 right-0 w-1/2 h-full bg-brand-purple/10 blur-[150px] -z-10 pointer-events-none"></div>
+        
+        <div class="max-w-7xl mx-auto px-6 w-full relative z-10 flex flex-col justify-center min-h-[calc(100vh-10rem)]">
+            
+            <div class="grid md:grid-cols-2 gap-12 lg:gap-24 items-center mb-16 w-full">
+                <div class="text-left w-full">
+                    <span class="block text-xs font-bold tracking-[0.25em] text-brand-accent uppercase mb-6">The Architecture of Human Potential</span>
+                    <h1 class="font-serif text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] text-white">
+                        You don't have a <br>strategy problem.<br>
+                        <span class="text-gradient italic font-medium">You have an alignment problem.</span>
+                    </h1>
+                </div>
+                
+                <div class="relative flex justify-center md:justify-end w-full">
+                    <div class="absolute top-1/2 right-0 -translate-y-1/2 w-3/4 h-3/4 bg-brand-purple/20 blur-[100px] rounded-full -z-10"></div>
+                    <img src="assets/hero-ronald.png" alt="Ronald Rotich" class="object-contain max-h-[60vh] w-auto drop-shadow-2xl opacity-95 hover:opacity-100 transition duration-700">
+                </div>
+            </div>
+            
+            <div class="max-w-4xl mx-auto text-center w-full">
+                <p class="text-xl md:text-2xl text-gray-400 mb-10 leading-relaxed font-light mx-auto">
+                    The leaders who shape industries aren't simply smarter or more disciplined. They are integrated — their logic, values, and instincts move as one, under pressure, in public, when it counts. That is what I build.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row justify-center gap-6 mb-12">
+                    <a href="#work" class="bg-white text-brand-black px-10 py-4 rounded-sm font-bold tracking-wide hover:bg-gray-200 transition">Work With Ronald</a>
+                    <a href="#solution" class="border border-brand-accent/50 text-white px-10 py-4 rounded-sm font-bold tracking-wide hover:bg-brand-purple/20 transition">See How It Works</a>
+                </div>
+                
+                <div class="flex flex-wrap justify-center gap-x-12 gap-y-4 text-xs font-semibold tracking-widest uppercase text-gray-500 pt-8 border-t border-brand-purple/20">
+                    <span class="flex items-center gap-2"><i class="fa-solid fa-trophy text-brand-accent"></i> Top Coach Globally 2021</span>
+                    <span>300+ Leaders Coached</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="py-32 bg-brand-black border-t border-brand-purple/20 relative overflow-hidden">
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-px h-24 bg-gradient-to-b from-brand-accent to-transparent"></div>
+        
+        <div class="absolute top-1/4 left-0 w-1/3 h-1/2 bg-brand-purple/5 blur-[120px] rounded-full -z-10 pointer-events-none"></div>
+        <div class="absolute bottom-0 right-1/4 w-1/3 h-1/3 bg-brand-accent/5 blur-[100px] rounded-full -z-10 pointer-events-none"></div>
+
+        <div class="max-w-5xl mx-auto px-6 text-center relative z-10 pt-8">
+            <h2 class="text-xs font-bold tracking-[0.2em] text-brand-accent uppercase mb-12">The Gap No One Talks About</h2>
+            
+            <div class="glass-card p-10 md:p-16 rounded-sm relative">
+                <blockquote class="font-serif text-4xl md:text-5xl lg:text-6xl text-white italic leading-tight mb-12 font-light">
+                    "You know what to do —<br>and still hesitate."
+                </blockquote>
+                
+                <div class="text-lg text-gray-300 space-y-6 text-left md:text-center max-w-3xl mx-auto font-light">
+                    <p>You've built something real. You lead people who depend on your judgment. You've earned the position, the title, the room.</p>
+                    <p>And yet — somewhere between the boardroom and the mirror, the signal gets noisy. You second-guess decisions you should own. You move fast on the wrong things and slow on the ones that matter.</p>
+                    <p>This is not a discipline problem. It is not a knowledge gap.</p>
+                    <p class="text-brand-accent font-medium text-2xl mt-10 font-serif border-t border-brand-purple/20 pt-8">It is an alignment problem — and it is costing you more than you realise.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="solution" class="py-32 bg-brand-dark border-y border-brand-purple/20 vector-grid relative">
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="mb-24 text-center max-w-3xl mx-auto">
+                <h2 class="font-serif text-5xl md:text-6xl text-white mb-8">This is what integration looks like</h2>
+                <p class="text-gray-400 text-lg leading-relaxed font-light">
+                    The highest-performing leaders I work with share one quality: their three intelligence centres are aligned. Not in theory. In the room. Under pressure. At speed. When these three move as one, the hesitation disappears. The decisions sharpen. The kind of leadership presence that moves rooms and builds cultures becomes consistent — not occasional.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="glass-card p-12 rounded-sm text-center">
+                    <div class="text-brand-accent text-4xl mb-8">◎</div>
+                    <h3 class="font-serif text-3xl text-white mb-4">Head — Logic</h3>
+                    <p class="text-gray-400 font-light leading-relaxed">Strategic clarity without analysis paralysis.</p>
+                </div>
+                <div class="glass-card p-12 rounded-sm text-center">
+                    <div class="text-brand-accent text-4xl mb-8">◈</div>
+                    <h3 class="font-serif text-3xl text-white mb-4">Heart — Values</h3>
+                    <p class="text-gray-400 font-light leading-relaxed">Decisions grounded in what actually matters.</p>
+                </div>
+                <div class="glass-card p-12 rounded-sm text-center">
+                    <div class="text-brand-accent text-4xl mb-8">◉</div>
+                    <h3 class="font-serif text-3xl text-white mb-4">Gut — Instinct</h3>
+                    <p class="text-gray-400 font-light leading-relaxed">Learning to trust the signal beneath the noise.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="work" class="py-32 bg-brand-black">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-xs font-bold tracking-[0.2em] text-brand-accent uppercase mb-16 text-center">How We Work Together</h2>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="glass-card p-14 rounded-sm relative overflow-hidden group">
+                    <div class="absolute top-6 right-8 text-7xl font-serif text-white/5 font-bold group-hover:text-brand-purple/30 transition duration-700">01</div>
+                    <h3 class="font-serif text-4xl text-white mb-6 relative z-10">Executive Coaching</h3>
+                    <p class="text-gray-400 relative z-10 leading-relaxed font-light">One-to-one, high-intensity coaching for senior leaders navigating complexity, transition, or scale. Built on mBIT, NLP, and Systemic Coaching methodologies.</p>
+                </div>
+                <div class="glass-card p-14 rounded-sm relative overflow-hidden group">
+                    <div class="absolute top-6 right-8 text-7xl font-serif text-white/5 font-bold group-hover:text-brand-purple/30 transition duration-700">02</div>
+                    <h3 class="font-serif text-4xl text-white mb-6 relative z-10">Leadership Architecture</h3>
+                    <p class="text-gray-400 relative z-10 leading-relaxed font-light">For executive teams that need to move together — surfacing hidden blockers, aligning on collective vision, and building the conditions for sustained performance.</p>
+                </div>
+                <div class="glass-card p-14 rounded-sm relative overflow-hidden group">
+                    <div class="absolute top-6 right-8 text-7xl font-serif text-white/5 font-bold group-hover:text-brand-purple/30 transition duration-700">03</div>
+                    <h3 class="font-serif text-4xl text-white mb-6 relative z-10">Transformational Facilitation</h3>
+                    <p class="text-gray-400 relative z-10 leading-relaxed font-light">High-stakes offsites, leadership retreats, and culture interventions. Experiences designed to shift how a team thinks — not just what they agree to.</p>
+                </div>
+                <div class="glass-card p-14 rounded-sm relative overflow-hidden group">
+                    <div class="absolute top-6 right-8 text-7xl font-serif text-white/5 font-bold group-hover:text-brand-purple/30 transition duration-700">04</div>
+                    <h3 class="font-serif text-4xl text-white mb-6 relative z-10">Keynote Speaking</h3>
+                    <p class="text-gray-400 relative z-10 leading-relaxed font-light">For global conferences and leadership forums. Ronald speaks on the intersection of inner alignment and outer performance — with the authority of someone who has applied it at scale.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 border-y border-brand-purple/20 bg-brand-dark vector-grid">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-x divide-brand-purple/20">
+            <div>
+                <div class="font-serif text-5xl md:text-6xl text-white mb-3">300+</div>
+                <div class="text-xs uppercase tracking-widest text-brand-accent font-semibold">Leaders coached globally</div>
+            </div>
+            <div>
+                <div class="font-serif text-5xl md:text-6xl text-white mb-3">15+</div>
+                <div class="text-xs uppercase tracking-widest text-brand-accent font-semibold">Years in the field</div>
+            </div>
+            <div>
+                <div class="font-serif text-5xl md:text-6xl text-white mb-3">400+</div>
+                <div class="text-xs uppercase tracking-widest text-brand-accent font-semibold">Businesses scaled</div>
+            </div>
+            <div>
+                <div class="font-serif text-5xl md:text-6xl text-white mb-3">1M+</div>
+                <div class="text-xs uppercase tracking-widest text-brand-accent font-semibold">Audience reach created</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-32 bg-brand-black">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <h2 class="text-xs font-bold tracking-[0.2em] text-gray-500 uppercase mb-20">Trusted By</h2>
+            
+            <div class="flex flex-wrap justify-center items-center gap-12 md:gap-24 opacity-60 mb-24">
+                <img src="assets/logo-mastercard.svg" alt="Mastercard Foundation" class="h-8 md:h-12 grayscale hover:grayscale-0 hover:opacity-100 transition duration-500">
+                <img src="assets/logo-oldmutual.svg" alt="Old Mutual" class="h-8 md:h-12 grayscale hover:grayscale-0 hover:opacity-100 transition duration-500">
+                <img src="assets/logo-stanbic.svg" alt="Stanbic Bank" class="h-8 md:h-12 grayscale hover:grayscale-0 hover:opacity-100 transition duration-500">
+                <img src="assets/logo-jambojet.svg" alt="JamboJet" class="h-8 md:h-12 grayscale hover:grayscale-0 hover:opacity-100 transition duration-500">
+                <img src="assets/logo-unga.svg" alt="Unga Group" class="h-8 md:h-12 grayscale hover:grayscale-0 hover:opacity-100 transition duration-500">
+            </div>
+
+            <div class="max-w-5xl mx-auto glass-card p-14 md:p-20 rounded-sm relative">
+                <i class="fa-solid fa-quote-left text-5xl text-brand-purple/30 absolute top-8 left-8"></i>
+                <p class="font-serif text-2xl md:text-3xl text-white leading-relaxed mb-10 italic relative z-10">
+                    "I had the pleasure of working closely with Ronald. He is an exceptional storyteller and a coach in public speaking & leadership development. He is agile and quick to conceptualise scenarios. He identified my strengths and tailored strategies to enhance my skills. His coaching approach is very supportive which has significantly transformed my perspective to communication and leading with impact."
+                </p>
+                <div class="text-xs tracking-widest text-gray-400 uppercase relative z-10">
+                    <span class="text-brand-accent font-bold block mb-2 text-sm">— Harriet Mwangi</span>
+                    Regional Applications Leader - Africa Emerging Countries, Oracle
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-32 bg-brand-dark border-t border-brand-purple/20">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-20 items-center">
+            <div class="relative">
+                <div class="absolute -inset-4 border border-brand-purple/30 rounded-sm transform translate-x-4 translate-y-4 -z-10"></div>
+                <img src="assets/about-ronald.jpg" alt="Ronald Rotich Coaching" class="w-full rounded-sm grayscale hover:grayscale-0 transition duration-700 shadow-2xl">
+            </div>
+            <div>
+                <h2 class="font-serif text-5xl md:text-6xl text-white mb-10">Built for this.</h2>
+                <div class="text-gray-400 space-y-6 leading-relaxed mb-12 font-light text-lg">
+                    <p>I didn't come to this work through theory. I came through the same question every leader eventually faces: why do smart, capable people keep getting in their own way?</p>
+                    <p>The answer, I've found, is always the same. It's not knowledge. It's not strategy. It's misalignment — between what the head knows, the heart values, and the gut senses.</p>
+                    <p>Over 15 years — working with executives across the world — I've built a methodology that resolves this. Not with generic frameworks, but with a precise, multi-lens approach that meets leaders exactly where they are.</p>
+                    <p class="text-white font-serif italic text-2xl border-l-2 border-brand-accent pl-6 mt-8 py-2">Operating from a global perspective, anchored in Nairobi.</p>
+                </div>
+                
+                <div class="grid sm:grid-cols-2 gap-8 pt-10 border-t border-brand-purple/20">
+                    <div>
+                        <div class="text-xs text-brand-accent uppercase tracking-widest mb-3 font-bold flex items-center gap-2"><i class="fa-solid fa-globe"></i> Global Recognition · 2021</div>
+                        <h4 class="text-white font-semibold mb-2 font-serif text-xl">Top Coach Globally</h4>
+                        <p class="text-sm text-gray-500 font-light">Coach Foundation. Peer-recognised internationally.</p>
+                    </div>
+                    <div>
+                        <div class="text-xs text-brand-accent uppercase tracking-widest mb-3 font-bold flex items-center gap-2"><i class="fa-solid fa-lightbulb"></i> Innovation · 2018</div>
+                        <h4 class="text-white font-semibold mb-2 font-serif text-xl">BMW Innovation Winner</h4>
+                        <p class="text-sm text-gray-500 font-light">Disruptive thinking validated on a global stage.</p>
+                    </div>
+                    <div>
+                        <div class="text-xs text-brand-accent uppercase tracking-widest mb-3 font-bold flex items-center gap-2"><i class="fa-solid fa-graduation-cap"></i> Education</div>
+                        <h4 class="text-white font-semibold mb-2 font-serif text-xl">BA Business (Finance)</h4>
+                        <p class="text-sm text-gray-500 font-light">Northumbria University, UK. Commercial rigour.</p>
+                    </div>
+                    <div>
+                        <div class="text-xs text-brand-accent uppercase tracking-widest mb-3 font-bold flex items-center gap-2"><i class="fa-solid fa-certificate"></i> Certifications</div>
+                        <h4 class="text-white font-semibold mb-2 font-serif text-xl">mBIT · NLP · Systemic</h4>
+                        <p class="text-sm text-gray-500 font-light">Multi-methodology. The right tool for the moment.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="lampstand" class="py-32 relative overflow-hidden bg-[#0a0510] border-t border-brand-purple/20 vector-grid">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-20 items-center">
+            <div class="z-10">
+                <div class="flex items-center gap-6 mb-10">
+                    <img src="assets/lampstand-icon.png" alt="My Lampstand Icon" class="w-20 h-20 rounded-2xl shadow-[0_0_30px_rgba(192,132,252,0.3)] border border-brand-purple/50">
+                    <div>
+                        <h2 class="font-serif text-4xl md:text-5xl text-white mb-2">My Lampstand</h2>
+                        <span class="text-xs font-bold tracking-[0.25em] text-brand-accent uppercase">App · Launching Soon</span>
+                    </div>
+                </div>
+                
+                <p class="text-white text-xl leading-relaxed mb-8 font-serif italic">
+                    The coaching room reaches hundreds. An app can reach millions.
+                </p>
+                <p class="text-gray-400 leading-relaxed mb-8 font-light text-lg">
+                    My Lampstand is built on a conviction: <span class="text-white font-medium">lasting habit change doesn't begin with behaviour — it begins with belief.</span> Drawing from the wisdom of biblical principles and the science of how the mind and emotions actually work, the app guides people through the inner shifts that make external change stick.
+                </p>
+                <p class="text-gray-400 leading-relaxed mb-12 font-light text-lg">
+                    It is the extension of the same architecture Ronald has applied with C-suite leaders — democratised, accessible, and built for the moment the world is in.
+                </p>
+                
+                <blockquote class="font-serif text-2xl md:text-3xl text-brand-accent italic border-l-4 border-brand-purple pl-8 mb-14">
+                    "What you do flows from who you believe you are."
+                </blockquote>
+                
+                <a href="mailto:info@ronaldrotich.com?subject=My Lampstand Waitlist" class="bg-transparent border-2 border-brand-accent text-white px-10 py-4 rounded-sm font-bold tracking-wide hover:bg-brand-accent hover:text-black transition inline-block">
+                    Join the Waitlist
+                </a>
+            </div>
+            
+            <div class="relative z-10 flex justify-center mt-10 md:mt-0">
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-brand-purple/40 blur-[120px] rounded-full -z-10"></div>
+                <img src="assets/lampstand-screen.png" alt="My Lampstand Interface" class="max-w-full md:max-w-md rounded-[3rem] border-[10px] border-[#1a1a1a] shadow-[0_20px_50px_rgba(0,0,0,0.5)] transform rotate-2 hover:rotate-0 transition duration-500">
+            </div>
+        </div>
+    </section>
+
+    <section class="py-40 bg-gradient-to-b from-brand-dark to-[#1a0b2e] text-center border-t border-brand-purple/20">
+        <div class="max-w-4xl mx-auto px-6">
+            <h2 class="font-serif text-6xl md:text-8xl font-bold text-white mb-10 leading-[1.1]">
+                If you know there is more available to you —<br>let's talk.
+            </h2>
+            <p class="text-2xl text-gray-300 mb-16 max-w-2xl mx-auto font-light italic">
+                This is not a conversation for people who are comfortable. It is a conversation for leaders who are ready.
+            </p>
+            <a href="mailto:info@ronaldrotich.com" class="bg-white text-brand-black px-12 py-5 rounded-sm font-bold text-lg hover:bg-gray-200 transition shadow-[0_0_40px_rgba(255,255,255,0.2)] inline-block mb-20 tracking-wide">
+                Book a Discovery Call
+            </a>
+            
+            <div class="flex flex-col md:flex-row justify-center items-center gap-8 text-xs font-semibold tracking-[0.2em] uppercase text-gray-500">
+                <a href="mailto:info@ronaldrotich.com" class="hover:text-brand-accent transition">info@ronaldrotich.com</a>
+                <span class="hidden md:inline">·</span>
+                <a href="tel:+254728578800" class="hover:text-brand-accent transition">+254 728 57 88 00</a>
+                <span class="hidden md:inline">·</span>
+                <a href="https://linkedin.com/in/ronaldrotich" target="_blank" class="hover:text-brand-accent transition flex items-center gap-2"><i class="fa-brands fa-linkedin text-lg"></i> LinkedIn</a>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
