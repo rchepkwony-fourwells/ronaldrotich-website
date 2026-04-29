@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ronald Rotich | The Architecture of Human Potential</title>
+    <title>Ronald Rotich | Human Performance Strategist</title>
+    
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
     <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap" rel="stylesheet">
     
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     
@@ -20,322 +21,505 @@
                 extend: {
                     colors: {
                         brand: {
-                            black: '#070707',
-                            dark: '#0f0a14',
-                            purple: '#4B0082',
-                            lightpurple: '#7e22ce',
-                            accent: '#c084fc'
+                            primary: '#3C2F82',
+                            accent: '#6B58C8',
+                            tint: '#EEEDFE',
+                            body: '#1A1A2E',
+                            muted: '#6B7280',
+                            amber: '#F59E0B',
+                            dark: '#0F0F1A'
                         }
                     },
                     fontFamily: {
-                        sans: ['Montserrat', 'sans-serif'],
-                        serif: ['Cormorant Garamond', 'serif'],
+                        sans: ['DM Sans', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
                     }
                 }
             }
         }
     </script>
+    
     <style>
-        body { background-color: #070707; color: #f3f4f6; }
+        body { color: #1A1A2E; background-color: #FFFFFF; }
         
-        .vector-grid {
-            background-image: 
-                linear-gradient(rgba(192, 132, 252, 0.05) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(192, 132, 252, 0.05) 1px, transparent 1px);
-            background-size: 60px 60px;
-            background-position: center center;
+        /* Subtle Texture Overlay for Hero */
+        .hero-texture {
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
         }
 
-        .text-gradient { background: linear-gradient(135deg, #c084fc 0%, #7e22ce 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .glass-nav { background: rgba(7, 7, 7, 0.85); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(192, 132, 252, 0.15); }
+        /* Sticky Nav Shadow */
+        .scrolled-nav {
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            border-bottom: 1px solid rgba(60, 47, 130, 0.1);
+        }
+
+        /* Scroll Animations */
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
         
-        .glass-card { 
-            background: rgba(255, 255, 255, 0.02); 
-            border: 1px solid rgba(192, 132, 252, 0.15); 
-            transition: all 0.4s ease; 
-            box-shadow: inset 0 0 20px rgba(75, 0, 130, 0.05);
-        }
-        .glass-card:hover { 
-            border-color: rgba(192, 132, 252, 0.5); 
-            transform: translateY(-4px); 
-            background: rgba(192, 132, 252, 0.05);
-            box-shadow: 0 10px 30px -10px rgba(75, 0, 130, 0.3);
-        }
+        /* Delay utility for grids */
+        .delay-100 { transition-delay: 100ms; }
+        .delay-200 { transition-delay: 200ms; }
+        .delay-300 { transition-delay: 300ms; }
     </style>
 </head>
-<body class="antialiased selection:bg-brand-purple selection:text-white">
+<body class="antialiased font-sans selection:bg-brand-primary selection:text-white">
 
-    <nav class="fixed w-full z-50 glass-nav transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="flex items-center gap-3 group">
-                <img src="assets/logo.png" alt="Ronald Rotich Logo" class="h-10 w-auto group-hover:opacity-80 transition">
-                <span class="font-serif text-2xl font-bold tracking-wide text-white hidden sm:block">Ronald Rotich</span>
+    <nav id="navbar" class="fixed w-full z-50 bg-white/95 backdrop-blur-md transition-all duration-300 border-b border-transparent py-4">
+        <div class="max-w-[1100px] mx-auto px-6 flex justify-between items-center">
+            <a href="#" class="flex flex-col group">
+                <span class="font-serif text-2xl font-bold text-brand-primary tracking-wide">Ronald Rotich</span>
+                <span class="text-[10px] font-semibold tracking-widest text-brand-muted uppercase mt-0.5">Human Performance Strategist</span>
             </a>
             
-            <div class="hidden md:flex space-x-10 items-center text-xs font-semibold tracking-[0.15em] text-gray-300 uppercase">
+            <div class="hidden lg:flex space-x-8 items-center text-sm font-medium text-brand-body">
                 <a href="#about" class="hover:text-brand-accent transition">About</a>
-                <a href="#work" class="hover:text-brand-accent transition">Work With Me</a>
-                <a href="#work" class="hover:text-brand-accent transition">Speaking</a>
-                <a href="#lampstand" class="hover:text-brand-accent transition flex items-center gap-2">
-                    <i class="fa-solid fa-bolt text-brand-purple"></i> My Lampstand
-                </a>
+                <a href="#framework" class="hover:text-brand-accent transition">The Framework</a>
+                <a href="#services" class="hover:text-brand-accent transition">Work With Me</a>
+                <a href="#services" class="hover:text-brand-accent transition">Speaking</a>
+                <a href="#lampstand" class="hover:text-brand-accent transition text-brand-amber font-semibold"><i class="fa-solid fa-bolt mr-1"></i> My Lampstand</a>
             </div>
 
-            <a href="mailto:info@ronaldrotich.com" class="hidden md:inline-block bg-brand-purple hover:bg-brand-lightpurple text-white px-7 py-3 rounded-sm text-xs font-bold tracking-widest uppercase transition border border-brand-lightpurple/50 shadow-[0_0_15px_rgba(75,0,130,0.5)]">
-                Book a Call
+            <a href="#contact" class="hidden md:inline-block bg-brand-primary hover:bg-brand-accent text-white px-6 py-2.5 rounded-sm text-sm font-semibold tracking-wide transition shadow-lg shadow-brand-primary/20">
+                Book a Discovery Call
             </a>
+            
+            <button class="lg:hidden text-brand-primary text-2xl"><i class="fa-solid fa-bars"></i></button>
         </div>
     </nav>
 
-    <section class="relative min-h-screen flex flex-col justify-center pt-32 pb-16 overflow-hidden vector-grid">
-        <div class="absolute top-1/4 right-0 w-1/2 h-full bg-brand-purple/10 blur-[150px] -z-10 pointer-events-none"></div>
-        <div class="max-w-7xl mx-auto px-6 w-full relative z-10 flex flex-col justify-center min-h-[calc(100vh-10rem)]">
+    <section class="relative min-h-[90vh] flex flex-col justify-center pt-32 pb-16 hero-texture bg-white">
+        <div class="max-w-[1100px] mx-auto px-6 w-full relative z-10 flex flex-col justify-center">
             
-            <span class="block text-sm md:text-base font-bold tracking-[0.3em] text-brand-accent uppercase mb-12 text-center w-full">The Architecture of Human Potential</span>
-            
-            <div class="grid md:grid-cols-2 gap-12 lg:gap-24 items-center mb-16 w-full">
-                <div class="text-left w-full">
-                    <h1 class="font-serif text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] text-white">
-                        You don't have a <br>strategy problem.<br>
-                        <span class="text-gradient italic font-medium">You have an alignment problem.</span>
+            <div class="grid md:grid-cols-2 gap-12 items-center mb-16 w-full">
+                <div class="text-left w-full reveal-on-scroll">
+                    <span class="block text-xs font-bold tracking-[0.25em] text-brand-accent uppercase mb-6">Human Performance Strategist | Leadership & Brand Consultant</span>
+                    <h1 class="font-serif text-5xl md:text-[56px] font-bold leading-[1.1] text-brand-primary mb-6">
+                        You don't have a <br>performance problem.<br>
+                        <span class="italic font-medium">You have an alignment problem.</span>
                     </h1>
+                    <p class="text-lg text-brand-muted mb-10 leading-relaxed font-normal max-w-[520px]">
+                        I work with senior leaders and organisations to close the gap between who they are and how they perform — through strategy, brand, culture, and the daily habits that make transformation permanent.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4 mb-10">
+                        <a href="#services" class="bg-brand-primary text-white px-8 py-3.5 rounded-sm font-semibold tracking-wide hover:bg-brand-accent transition text-center shadow-lg shadow-brand-primary/20">Work With Ronald</a>
+                        <a href="#framework" class="border-2 border-brand-primary/20 text-brand-primary px-8 py-3.5 rounded-sm font-semibold tracking-wide hover:bg-brand-tint transition text-center">See the Framework</a>
+                    </div>
+                    
+                    <div class="text-xs font-semibold tracking-wider text-brand-muted uppercase flex flex-wrap gap-x-2 gap-y-2 items-center">
+                        <span class="text-brand-accent">Top Coach Globally 2021</span> <span class="hidden sm:inline">·</span> 
+                        <span>300+ Leaders Coached</span> <span class="hidden sm:inline">·</span> 
+                        <span>Trusted by Mastercard Foundation, Old Mutual, Stanbic Bank & more</span>
+                    </div>
                 </div>
                 
-                <div class="relative flex justify-center md:justify-end w-full">
-                    <div class="absolute top-1/2 right-0 -translate-y-1/2 w-3/4 h-3/4 bg-brand-purple/20 blur-[100px] rounded-full -z-10"></div>
-                    <img src="assets/hero-ronald.png" alt="Ronald Rotich" class="object-contain max-h-[60vh] w-auto drop-shadow-2xl opacity-95 hover:opacity-100 transition duration-700">
+                <div class="relative flex justify-center md:justify-end w-full reveal-on-scroll delay-100">
+                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-brand-tint rounded-full blur-[80px] -z-10"></div>
+                    <img src="assets/hero-ronald.png" alt="Ronald Rotich" class="object-contain max-h-[60vh] w-auto drop-shadow-2xl">
                 </div>
             </div>
             
-            <div class="max-w-4xl mx-auto text-center w-full">
-                <p class="text-xl md:text-2xl text-gray-400 mb-10 leading-relaxed font-light mx-auto">
-                    The leaders who shape industries aren't simply smarter or more disciplined. They are integrated — their logic, values, and instincts move as one, under pressure, in public, when it counts. That is what I build.
-                </p>
-                <div class="flex flex-col sm:flex-row justify-center gap-6 mb-12">
-                    <a href="#work" class="bg-white text-brand-black px-10 py-4 rounded-sm font-bold tracking-wide hover:bg-gray-200 transition">Work With Ronald</a>
-                    <a href="#solution" class="border border-brand-accent/50 text-white px-10 py-4 rounded-sm font-bold tracking-wide hover:bg-brand-purple/20 transition">See How It Works</a>
-                </div>
-                <div class="flex flex-wrap justify-center gap-x-12 gap-y-4 text-xs font-semibold tracking-widest uppercase text-gray-500 pt-8 border-t border-brand-purple/20">
-                    <span class="flex items-center gap-2"><i class="fa-solid fa-trophy text-brand-accent"></i> Top Coach Globally 2021</span>
-                    <span>300+ Leaders Coached</span>
-                </div>
+            <div class="w-full bg-brand-tint py-8 px-6 md:px-12 rounded-sm border border-brand-primary/5 reveal-on-scroll delay-200 text-center">
+                <p class="font-serif text-xl md:text-2xl text-brand-primary italic mb-4">"His coaching approach has significantly transformed my perspective on communication and leading with impact."</p>
+                <p class="text-xs font-bold tracking-widest text-brand-muted uppercase">Harriet Mwangi — Regional Applications Leader, Africa Emerging Countries, Oracle</p>
             </div>
         </div>
     </section>
 
-    <section class="py-32 bg-brand-black border-t border-brand-purple/20 relative overflow-hidden">
-        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-px h-24 bg-gradient-to-b from-brand-accent to-transparent"></div>
-        <div class="absolute top-1/4 left-0 w-1/3 h-1/2 bg-brand-purple/5 blur-[120px] rounded-full -z-10 pointer-events-none"></div>
-        <div class="absolute bottom-0 right-1/4 w-1/3 h-1/3 bg-brand-accent/5 blur-[100px] rounded-full -z-10 pointer-events-none"></div>
-
-        <div class="max-w-5xl mx-auto px-6 text-center relative z-10 pt-8">
-            <h2 class="text-xs font-bold tracking-[0.2em] text-brand-accent uppercase mb-12">The Gap No One Talks About</h2>
-            <div class="glass-card p-10 md:p-16 rounded-sm relative">
-                <blockquote class="font-serif text-4xl md:text-5xl lg:text-6xl text-white italic leading-tight mb-12 font-light">
-                    "You know what to do —<br>and still hesitate."
+    <section class="py-24 bg-white border-t border-gray-100">
+        <div class="max-w-[1100px] mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+            <div class="reveal-on-scroll">
+                <h2 class="text-xs font-bold tracking-[0.2em] text-brand-accent uppercase mb-8">The gap no one talks about</h2>
+                <blockquote class="font-serif text-4xl md:text-5xl text-brand-primary italic leading-tight">
+                    "You know exactly what to do. So why does something keep getting in the way?"
                 </blockquote>
-                <div class="text-lg text-gray-300 space-y-6 text-left md:text-center max-w-3xl mx-auto font-light">
-                    <p>You've built something real. You lead people who depend on your judgment. You've earned the position, the title, the room.</p>
-                    <p>And yet — somewhere between the boardroom and the mirror, the signal gets noisy. You second-guess decisions you should own. You move fast on the wrong things and slow on the ones that matter.</p>
-                    <p>This is not a discipline problem. It is not a knowledge gap.</p>
-                    <p class="text-brand-accent font-medium text-2xl mt-10 font-serif border-t border-brand-purple/20 pt-8">It is an alignment problem — and it is costing you more than you realise.</p>
+            </div>
+            <div class="text-lg text-brand-body space-y-6 font-light leading-relaxed reveal-on-scroll delay-100">
+                <p>You've built something real. You lead people who depend on your judgment. You've earned the room.</p>
+                <p>And yet — somewhere between the boardroom and the mirror, the signal gets noisy. You second-guess decisions you should own with confidence. You move fast on the wrong things and slow on the ones that matter most.</p>
+                <p>Your team senses it. Your results reflect it. This is not a discipline problem. It is not a skills gap. It is not a strategy problem.</p>
+                <p class="text-brand-primary font-medium text-2xl pt-4 font-serif">It is an alignment problem — and it is far more common at the top than anyone admits.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-24 bg-[#FAFAFA]">
+        <div class="max-w-[1100px] mx-auto px-6">
+            <h2 class="text-xs font-bold tracking-[0.2em] text-brand-accent uppercase mb-12 text-center md:text-left reveal-on-scroll">What I do</h2>
+            
+            <div class="grid md:grid-cols-2 gap-16 items-center mb-16">
+                <div class="reveal-on-scroll">
+                    <h3 class="font-serif text-4xl md:text-[40px] text-brand-primary mb-8 leading-tight">I diagnose what's really going on — then build from the foundation up.</h3>
+                    <div class="text-brand-body space-y-6 font-light leading-relaxed">
+                        <p>I am Ronald Rotich — Human Performance Strategist and Leadership & Brand Consultant. For 15 years I have worked with senior leaders, executive teams, and growing organisations across Africa and internationally.</p>
+                        <p>My work sits at the intersection of three disciplines that are almost never combined: leadership performance, brand strategy, and human psychology. Most consultants operate in one lane. I work across all three — because that is where the real blockers live.</p>
+                        <p>When a leadership team stalls, when a high-performer plateaus, when a bold vision keeps failing to land — the answer is almost never what it appears to be on the surface. My role is to diagnose accurately, name what others won't, and architect the path forward.</p>
+                    </div>
+                </div>
+                <div class="relative reveal-on-scroll delay-100">
+                    <div class="absolute -inset-4 bg-brand-tint rounded-sm transform translate-x-3 translate-y-3 -z-10"></div>
+                    <img src="assets/about-ronald.jpg" alt="Ronald Rotich" class="w-full rounded-sm shadow-xl">
+                </div>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-6 reveal-on-scroll delay-200">
+                <div class="bg-white p-6 rounded-sm border border-gray-100 shadow-sm flex items-start gap-4">
+                    <i class="fa-solid fa-globe text-brand-accent text-2xl mt-1"></i>
+                    <div>
+                        <div class="font-bold text-brand-primary mb-1">Top Coach Globally 2021</div>
+                        <div class="text-sm text-brand-muted font-light">Coach Foundation — International Recognition</div>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-sm border border-gray-100 shadow-sm flex items-start gap-4">
+                    <i class="fa-solid fa-users text-brand-accent text-2xl mt-1"></i>
+                    <div>
+                        <div class="font-bold text-brand-primary mb-1">300+ Leaders</div>
+                        <div class="text-sm text-brand-muted font-light">Coached across Africa & internationally</div>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-sm border border-gray-100 shadow-sm flex items-start gap-4">
+                    <i class="fa-solid fa-hourglass-half text-brand-accent text-2xl mt-1"></i>
+                    <div>
+                        <div class="font-bold text-brand-primary mb-1">15+ Years</div>
+                        <div class="text-sm text-brand-muted font-light">At the intersection of strategy, brand & human performance</div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="solution" class="py-32 bg-brand-dark border-y border-brand-purple/20 vector-grid relative">
-        <div class="max-w-7xl mx-auto px-6 relative z-10">
-            <div class="mb-24 text-center max-w-3xl mx-auto">
-                <h2 class="font-serif text-5xl md:text-6xl text-white mb-8">This is what integration looks like</h2>
-                <p class="text-gray-400 text-lg leading-relaxed font-light">
-                    The highest-performing leaders I work with share one quality: their three intelligence centres are aligned. Not in theory. In the room. Under pressure. At speed. When these three move as one, the hesitation disappears. The decisions sharpen. The kind of leadership presence that moves rooms and builds cultures becomes consistent — not occasional.
+    <section id="framework" class="py-32 bg-brand-primary text-white">
+        <div class="max-w-[900px] mx-auto px-6">
+            <div class="text-center mb-20 reveal-on-scroll">
+                <h2 class="text-xs font-bold tracking-[0.2em] text-brand-tint uppercase mb-6">The Architecture of Human Potential</h2>
+                <h3 class="font-serif text-4xl md:text-[44px] mb-6">The framework behind every engagement</h3>
+                <p class="text-brand-tint/80 font-light text-lg max-w-[600px] mx-auto">
+                    Most leadership frameworks start with strategy. This one starts one level deeper — with the question that determines whether any strategy will ever work: who are you, really, and are all of you pointing in the same direction?
                 </p>
             </div>
             
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="glass-card p-12 rounded-sm text-center">
-                    <div class="text-brand-accent text-4xl mb-8">◎</div>
-                    <h3 class="font-serif text-3xl text-white mb-4">Head — Logic</h3>
-                    <p class="text-gray-400 font-light leading-relaxed">Strategic clarity without analysis paralysis.</p>
+            <div class="flex flex-col gap-3 reveal-on-scroll delay-100">
+                
+                <div class="bg-brand-accent p-8 text-center rounded-sm shadow-2xl relative z-50">
+                    <div class="text-[10px] font-bold tracking-[0.2em] uppercase text-white/70 mb-2">The daily compound interest</div>
+                    <h4 class="font-serif text-2xl font-bold mb-3">Positive Micro-Habits</h4>
+                    <p class="text-white/90 text-sm font-light max-w-[700px] mx-auto">The small, aligned, daily actions that convert insight into identity and strategy into results. The distance between knowing and doing is always — always — closed by habit, never by motivation alone.</p>
                 </div>
-                <div class="glass-card p-12 rounded-sm text-center">
-                    <div class="text-brand-accent text-4xl mb-8">◈</div>
-                    <h3 class="font-serif text-3xl text-white mb-4">Heart — Values</h3>
-                    <p class="text-gray-400 font-light leading-relaxed">Decisions grounded in what actually matters.</p>
+
+                <div class="bg-white/10 p-8 flex flex-col md:flex-row gap-6 items-center rounded-sm border border-white/5 mx-2 relative z-40 hover:bg-white/15 transition">
+                    <div class="text-brand-accent font-serif text-5xl font-bold opacity-50">04</div>
+                    <div>
+                        <div class="text-[10px] font-bold tracking-[0.2em] uppercase text-brand-tint mb-1">How others move with you</div>
+                        <h4 class="font-serif text-2xl font-bold mb-2">Culture & Values</h4>
+                        <p class="text-brand-tint/80 text-sm font-light leading-relaxed">The operating environment in which everything else either thrives or dies. Culture is not what you declare at an offsite or print on a wall. It is what your people see you do when no one is watching — and what you tolerate when they are.</p>
+                    </div>
                 </div>
-                <div class="glass-card p-12 rounded-sm text-center">
-                    <div class="text-brand-accent text-4xl mb-8">◉</div>
-                    <h3 class="font-serif text-3xl text-white mb-4">Gut — Instinct</h3>
-                    <p class="text-gray-400 font-light leading-relaxed">Learning to trust the signal beneath the noise.</p>
+
+                <div class="bg-white/15 p-8 flex flex-col md:flex-row gap-6 items-center rounded-sm border border-white/5 mx-4 relative z-30 hover:bg-white/20 transition">
+                    <div class="text-brand-accent font-serif text-5xl font-bold opacity-60">03</div>
+                    <div>
+                        <div class="text-[10px] font-bold tracking-[0.2em] uppercase text-brand-tint mb-1">How you show up</div>
+                        <h4 class="font-serif text-2xl font-bold mb-2">Brand</h4>
+                        <p class="text-brand-tint/80 text-sm font-light leading-relaxed">Not marketing — identity. The perception you create in every room, every communication, every decision you make publicly. For leaders and organisations alike, brand is either an asset compounding daily or a liability quietly eroding trust.</p>
+                    </div>
                 </div>
+
+                <div class="bg-white/20 p-8 flex flex-col md:flex-row gap-6 items-center rounded-sm border border-white/5 mx-6 relative z-20 hover:bg-white/25 transition">
+                    <div class="text-brand-accent font-serif text-5xl font-bold opacity-80">02</div>
+                    <div>
+                        <div class="text-[10px] font-bold tracking-[0.2em] uppercase text-brand-tint mb-1">How you move</div>
+                        <h4 class="font-serif text-2xl font-bold mb-2">Strategy</h4>
+                        <p class="text-brand-tint/80 text-sm font-light leading-relaxed">The external roadmap — where you are going, what you will do, and crucially, what you will say no to. Strategy built on genuine purpose is coherent and decisive. Strategy without it is just activity dressed as direction.</p>
+                    </div>
+                </div>
+
+                <div class="bg-white/25 p-8 flex flex-col md:flex-row gap-6 items-center rounded-sm border border-white/5 mx-8 relative z-10 hover:bg-white/30 transition">
+                    <div class="text-brand-accent font-serif text-5xl font-bold opacity-100">01</div>
+                    <div>
+                        <div class="text-[10px] font-bold tracking-[0.2em] uppercase text-brand-tint mb-1">Where it begins</div>
+                        <h4 class="font-serif text-2xl font-bold mb-2">Purpose</h4>
+                        <p class="text-brand-tint/80 text-sm font-light leading-relaxed">Clarity on why you lead — the deep conviction that makes every other decision easier and every sacrifice worthwhile. Without this, strategy is direction without destination. With it, everything else becomes obvious.</p>
+                    </div>
+                </div>
+
+                <div class="bg-white text-brand-primary p-8 text-center rounded-sm shadow-2xl relative z-0 mt-2 mx-10">
+                    <div class="text-[10px] font-bold tracking-[0.2em] uppercase text-brand-accent mb-2">The foundation beneath everything</div>
+                    <h4 class="font-serif text-2xl font-bold mb-3">Unified Intelligence</h4>
+                    <p class="text-brand-body/80 text-sm font-light max-w-[700px] mx-auto">The discipline of listening to your Head (Logic), Heart (Values), and Gut (Instinct) simultaneously — so that every layer above is built on alignment, not assumption.</p>
+                </div>
+            </div>
+
+            <div class="mt-20 text-center reveal-on-scroll delay-200">
+                <p class="font-serif text-2xl italic mb-6">Ready to build yours?</p>
+                <a href="#contact" class="inline-block bg-white text-brand-primary px-10 py-4 rounded-sm font-bold tracking-wide hover:bg-brand-tint transition shadow-xl">Work With Ronald</a>
             </div>
         </div>
     </section>
 
-    <section id="work" class="py-32 bg-brand-black">
-        <div class="max-w-7xl mx-auto px-6">
-            <h2 class="text-xs font-bold tracking-[0.2em] text-brand-accent uppercase mb-16 text-center">How We Work Together</h2>
+    <section id="services" class="py-32 bg-white">
+        <div class="max-w-[1100px] mx-auto px-6">
+            <div class="text-center mb-20 reveal-on-scroll">
+                <h2 class="text-xs font-bold tracking-[0.2em] text-brand-accent uppercase mb-4">How we work together</h2>
+                <h3 class="font-serif text-4xl md:text-[40px] text-brand-primary mb-6">Four ways to engage</h3>
+                <p class="text-brand-muted font-light max-w-[550px] mx-auto">
+                    Every engagement begins with a diagnostic conversation. What follows is built specifically for the leader and the moment.
+                </p>
+            </div>
+            
             <div class="grid md:grid-cols-2 gap-8">
-                <div class="glass-card p-14 rounded-sm relative overflow-hidden group">
-                    <div class="absolute top-6 right-8 text-7xl font-serif text-brand-purple/20 font-bold group-hover:text-brand-purple/40 transition duration-700">01</div>
-                    <h3 class="font-serif text-4xl text-white mb-6 relative z-10">Executive Coaching</h3>
-                    <p class="text-gray-400 relative z-10 leading-relaxed font-light">One-to-one, high-intensity coaching for senior leaders navigating complexity, transition, or scale. Built on mBIT, NLP, and Systemic Coaching methodologies.</p>
+                <div class="bg-[#FAFAFA] p-10 rounded-sm border border-gray-100 hover:border-brand-accent/30 hover:shadow-lg transition duration-300 relative group reveal-on-scroll">
+                    <div class="absolute top-8 right-8 text-6xl font-serif text-brand-primary/5 font-bold group-hover:text-brand-primary/10 transition">01</div>
+                    <h4 class="font-serif text-2xl font-bold text-brand-primary mb-4 relative z-10">Executive Coaching</h4>
+                    <p class="text-brand-body font-light mb-8 leading-relaxed relative z-10">One-to-one, high-intensity coaching for senior leaders navigating complexity, transition, or scale. We work at the level where the real decisions are made — identity, values, instinct — not just skill. Built on mBIT, NLP, and Systemic Coaching methodologies.</p>
+                    <a href="mailto:info@ronaldrotich.com" class="text-brand-accent font-semibold text-sm hover:text-brand-primary transition">Enquire &rarr;</a>
                 </div>
-                <div class="glass-card p-14 rounded-sm relative overflow-hidden group">
-                    <div class="absolute top-6 right-8 text-7xl font-serif text-brand-purple/20 font-bold group-hover:text-brand-purple/40 transition duration-700">02</div>
-                    <h3 class="font-serif text-4xl text-white mb-6 relative z-10">Leadership Architecture</h3>
-                    <p class="text-gray-400 relative z-10 leading-relaxed font-light">For executive teams that need to move together — surfacing hidden blockers, aligning on collective vision, and building the conditions for sustained performance.</p>
+                <div class="bg-[#FAFAFA] p-10 rounded-sm border border-gray-100 hover:border-brand-accent/30 hover:shadow-lg transition duration-300 relative group reveal-on-scroll delay-100">
+                    <div class="absolute top-8 right-8 text-6xl font-serif text-brand-primary/5 font-bold group-hover:text-brand-primary/10 transition">02</div>
+                    <h4 class="font-serif text-2xl font-bold text-brand-primary mb-4 relative z-10">Leadership Architecture</h4>
+                    <p class="text-brand-body font-light mb-8 leading-relaxed relative z-10">For executive teams that need to move together. I work with the team as a living system — surfacing the hidden dynamics, aligning on collective vision, and building the internal conditions for sustained, high-stakes performance.</p>
+                    <a href="mailto:info@ronaldrotich.com" class="text-brand-accent font-semibold text-sm hover:text-brand-primary transition">Enquire &rarr;</a>
                 </div>
-                <div class="glass-card p-14 rounded-sm relative overflow-hidden group">
-                    <div class="absolute top-6 right-8 text-7xl font-serif text-brand-purple/20 font-bold group-hover:text-brand-purple/40 transition duration-700">03</div>
-                    <h3 class="font-serif text-4xl text-white mb-6 relative z-10">Transformational Facilitation</h3>
-                    <p class="text-gray-400 relative z-10 leading-relaxed font-light">High-stakes offsites, leadership retreats, and culture interventions. Experiences designed to shift how a team thinks — not just what they agree to.</p>
+                <div class="bg-[#FAFAFA] p-10 rounded-sm border border-gray-100 hover:border-brand-accent/30 hover:shadow-lg transition duration-300 relative group reveal-on-scroll">
+                    <div class="absolute top-8 right-8 text-6xl font-serif text-brand-primary/5 font-bold group-hover:text-brand-primary/10 transition">03</div>
+                    <h4 class="font-serif text-2xl font-bold text-brand-primary mb-4 relative z-10">Brand & Strategy Consulting</h4>
+                    <p class="text-brand-body font-light mb-8 leading-relaxed relative z-10">For leaders and organisations whose external identity no longer reflects who they have become internally. I work across Purpose, Brand positioning, and Culture alignment — so that what you say, what you do, and how you are perceived are finally the same thing.</p>
+                    <a href="mailto:info@ronaldrotich.com" class="text-brand-accent font-semibold text-sm hover:text-brand-primary transition">Enquire &rarr;</a>
                 </div>
-                <div class="glass-card p-14 rounded-sm relative overflow-hidden group">
-                    <div class="absolute top-6 right-8 text-7xl font-serif text-brand-purple/20 font-bold group-hover:text-brand-purple/40 transition duration-700">04</div>
-                    <h3 class="font-serif text-4xl text-white mb-6 relative z-10">Keynote Speaking</h3>
-                    <p class="text-gray-400 relative z-10 leading-relaxed font-light">For global conferences and leadership forums. Ronald speaks on the intersection of inner alignment and outer performance — with the authority of someone who has applied it at scale.</p>
+                <div class="bg-[#FAFAFA] p-10 rounded-sm border border-gray-100 hover:border-brand-accent/30 hover:shadow-lg transition duration-300 relative group reveal-on-scroll delay-100">
+                    <div class="absolute top-8 right-8 text-6xl font-serif text-brand-primary/5 font-bold group-hover:text-brand-primary/10 transition">04</div>
+                    <h4 class="font-serif text-2xl font-bold text-brand-primary mb-4 relative z-10">Keynote Speaking & Facilitation</h4>
+                    <p class="text-brand-body font-light mb-8 leading-relaxed relative z-10">For global conferences, leadership summits, and high-stakes team offsites. Ronald speaks and facilitates on the intersection of inner alignment and outer performance — with the authority of someone who has lived and applied it for 15 years across four continents.</p>
+                    <a href="mailto:info@ronaldrotich.com" class="text-brand-accent font-semibold text-sm hover:text-brand-primary transition">Enquire &rarr;</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="py-20 border-y border-brand-purple/20 bg-brand-dark vector-grid">
-        <div class="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-x divide-brand-purple/20">
-            <div>
-                <div class="font-serif text-5xl md:text-6xl text-white mb-3">300+</div>
-                <div class="text-xs uppercase tracking-widest text-brand-accent font-semibold">Leaders coached globally</div>
+    <section class="py-20 bg-brand-primary text-white border-y border-brand-accent/30">
+        <div class="max-w-[1100px] mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-10 text-center divide-x divide-white/10">
+            <div class="reveal-on-scroll">
+                <div class="font-serif text-5xl md:text-6xl font-bold mb-3">300+</div>
+                <div class="text-xs uppercase tracking-widest text-brand-tint font-light">Leaders coached globally</div>
             </div>
-            <div>
-                <div class="font-serif text-5xl md:text-6xl text-white mb-3">15+</div>
-                <div class="text-xs uppercase tracking-widest text-brand-accent font-semibold">Years in the field</div>
+            <div class="reveal-on-scroll delay-100">
+                <div class="font-serif text-5xl md:text-6xl font-bold mb-3">15+</div>
+                <div class="text-xs uppercase tracking-widest text-brand-tint font-light">Years at the intersection</div>
             </div>
-            <div>
-                <div class="font-serif text-5xl md:text-6xl text-white mb-3">400+</div>
-                <div class="text-xs uppercase tracking-widest text-brand-accent font-semibold">Businesses scaled</div>
+            <div class="reveal-on-scroll delay-200">
+                <div class="font-serif text-5xl md:text-6xl font-bold mb-3">400+</div>
+                <div class="text-xs uppercase tracking-widest text-brand-tint font-light">Businesses scaled</div>
             </div>
-            <div>
-                <div class="font-serif text-5xl md:text-6xl text-white mb-3">1M+</div>
-                <div class="text-xs uppercase tracking-widest text-brand-accent font-semibold">Audience reach created</div>
+            <div class="reveal-on-scroll delay-300">
+                <div class="font-serif text-5xl md:text-6xl font-bold mb-3">1M+</div>
+                <div class="text-xs uppercase tracking-widest text-brand-tint font-light">Audience reach created</div>
             </div>
         </div>
     </section>
 
-    <section class="py-32 bg-brand-black">
-        <div class="max-w-7xl mx-auto px-6 text-center">
-            <h2 class="text-xs font-bold tracking-[0.2em] text-gray-500 uppercase mb-20">Trusted By</h2>
+    <section class="py-32 bg-white">
+        <div class="max-w-[1100px] mx-auto px-6 text-center">
+            <h2 class="text-xs font-bold tracking-[0.2em] text-brand-muted uppercase mb-16 reveal-on-scroll">Trusted by</h2>
             
-            <div class="flex justify-center items-center opacity-60 hover:opacity-100 transition duration-500 mb-24 px-4">
-                <img src="assets/logo-mastercard.png" alt="Trusted by Global Organizations" class="h-16 md:h-24 lg:h-28 w-auto object-contain grayscale hover:grayscale-0 transition duration-500">
+            <div class="flex flex-wrap justify-center items-center gap-x-12 gap-y-8 opacity-60 hover:opacity-100 transition duration-500 mb-24 reveal-on-scroll delay-100">
+                <img src="assets/logo-mastercard.png" alt="Trusted by Global Organizations" class="h-12 md:h-16 w-auto object-contain grayscale hover:grayscale-0 transition duration-500">
+                <div class="text-sm font-bold text-gray-400 uppercase tracking-widest">Mastercard Foundation</div>
+                <div class="text-sm font-bold text-gray-400 uppercase tracking-widest">Old Mutual</div>
+                <div class="text-sm font-bold text-gray-400 uppercase tracking-widest">Stanbic Bank</div>
+                <div class="text-sm font-bold text-gray-400 uppercase tracking-widest">JamboJet</div>
             </div>
 
-            <div class="max-w-5xl mx-auto glass-card p-14 md:p-20 rounded-sm relative">
-                <i class="fa-solid fa-quote-left text-5xl text-brand-purple/30 absolute top-8 left-8"></i>
-                <p class="font-serif text-2xl md:text-3xl text-white leading-relaxed mb-10 italic relative z-10">
-                    "I had the pleasure of working closely with Ronald. He is an exceptional storyteller and a coach in public speaking & leadership development. He is agile and quick to conceptualise scenarios. He identified my strengths and tailored strategies to enhance my skills. His coaching approach is very supportive which has significantly transformed my perspective to communication and leading with impact."
-                </p>
-                <div class="text-xs tracking-widest text-gray-400 uppercase relative z-10">
-                    <span class="text-brand-accent font-bold block mb-2 text-sm">— Harriet Mwangi</span>
-                    Regional Applications Leader - Africa Emerging Countries, Oracle
+            <div class="grid md:grid-cols-3 gap-8 text-left">
+                <div class="bg-brand-tint p-8 rounded-sm reveal-on-scroll">
+                    <i class="fa-solid fa-quote-left text-3xl text-brand-primary/20 mb-4"></i>
+                    <p class="font-serif text-lg text-brand-primary leading-relaxed mb-8 italic">
+                        "He is an exceptional storyteller and coach in public speaking & leadership development… His coaching approach has significantly transformed my perspective on communication and leading with impact."
+                    </p>
+                    <div>
+                        <div class="font-bold text-brand-primary text-sm">Harriet Mwangi</div>
+                        <div class="text-xs text-brand-muted">Regional Applications Leader — Africa Emerging Countries, Oracle</div>
+                    </div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="about" class="py-32 bg-brand-dark border-t border-brand-purple/20">
-        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-20 items-center">
-            <div class="relative">
-                <div class="absolute -inset-4 border border-brand-purple/30 rounded-sm transform translate-x-4 translate-y-4 -z-10"></div>
-                <img src="assets/about-ronald.jpg" alt="Ronald Rotich Coaching" class="w-full rounded-sm grayscale hover:grayscale-0 transition duration-700 shadow-2xl">
-            </div>
-            <div>
-                <h2 class="font-serif text-5xl md:text-6xl text-white mb-10">Built for this.</h2>
-                <div class="text-gray-400 space-y-6 leading-relaxed mb-12 font-light text-lg">
-                    <p>I didn't come to this work through theory. I came through the same question every leader eventually faces: why do smart, capable people keep getting in their own way?</p>
-                    <p>The answer, I've found, is always the same. It's not knowledge. It's not strategy. It's misalignment — between what the head knows, the heart values, and the gut senses.</p>
-                    <p>Over 15 years — working with executives across the world — I've built a methodology that resolves this. Not with generic frameworks, but with a precise, multi-lens approach that meets leaders exactly where they are.</p>
-                    <p class="text-white font-serif italic text-2xl border-l-2 border-brand-accent pl-6 mt-8 py-2">Operating from a global perspective, anchored in Nairobi.</p>
+                <div class="bg-white border border-brand-primary/20 p-8 rounded-sm reveal-on-scroll delay-100 shadow-sm">
+                    <i class="fa-solid fa-quote-left text-3xl text-brand-primary/20 mb-4"></i>
+                    <p class="font-serif text-lg text-brand-primary leading-relaxed mb-8 italic">
+                        "He has had a very positive impact on my professional and personal growth… he points out growth areas while making you feel accomplished."
+                    </p>
+                    <div>
+                        <div class="font-bold text-brand-primary text-sm">Hellen Kangiri</div>
+                        <div class="text-xs text-brand-muted">Organizational Development Specialist</div>
+                    </div>
                 </div>
-                <div class="grid sm:grid-cols-2 gap-8 pt-10 border-t border-brand-purple/20">
+                <div class="bg-brand-tint p-8 rounded-sm reveal-on-scroll delay-200">
+                    <i class="fa-solid fa-quote-left text-3xl text-brand-primary/20 mb-4"></i>
+                    <p class="font-serif text-lg text-brand-primary leading-relaxed mb-8 italic">
+                        "His understanding of human psychology that underpins the fear of public speaking was remarkable… he also boosted my self-esteem."
+                    </p>
                     <div>
-                        <div class="text-xs text-brand-accent uppercase tracking-widest mb-3 font-bold flex items-center gap-2"><i class="fa-solid fa-globe"></i> Global Recognition · 2021</div>
-                        <h4 class="text-white font-semibold mb-2 font-serif text-xl">Top Coach Globally</h4>
-                        <p class="text-sm text-gray-500 font-light">Coach Foundation. Peer-recognised internationally.</p>
-                    </div>
-                    <div>
-                        <div class="text-xs text-brand-accent uppercase tracking-widest mb-3 font-bold flex items-center gap-2"><i class="fa-solid fa-lightbulb"></i> Innovation · 2018</div>
-                        <h4 class="text-white font-semibold mb-2 font-serif text-xl">BMW Innovation Winner</h4>
-                        <p class="text-sm text-gray-500 font-light">Disruptive thinking validated on a global stage.</p>
-                    </div>
-                    <div>
-                        <div class="text-xs text-brand-accent uppercase tracking-widest mb-3 font-bold flex items-center gap-2"><i class="fa-solid fa-graduation-cap"></i> Education</div>
-                        <h4 class="text-white font-semibold mb-2 font-serif text-xl">BA Business (Finance)</h4>
-                        <p class="text-sm text-gray-500 font-light">Northumbria University, UK. Commercial rigour.</p>
-                    </div>
-                    <div>
-                        <div class="text-xs text-brand-accent uppercase tracking-widest mb-3 font-bold flex items-center gap-2"><i class="fa-solid fa-certificate"></i> Certifications</div>
-                        <h4 class="text-white font-semibold mb-2 font-serif text-xl">mBIT · NLP · Systemic</h4>
-                        <p class="text-sm text-gray-500 font-light">Multi-methodology. The right tool for the moment.</p>
+                        <div class="font-bold text-brand-primary text-sm">Esther Masese</div>
+                        <div class="text-xs text-brand-muted">Chief Financial Services Officer, Safaricom</div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="lampstand" class="py-32 relative overflow-hidden bg-[#0a0510] border-t border-brand-purple/20 vector-grid">
-        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-20 items-center">
-            <div class="z-10">
-                <div class="flex items-center gap-6 mb-10">
-                    <img src="assets/lampstand-icon.png" alt="My Lampstand Icon" class="w-20 h-20 rounded-2xl shadow-[0_0_30px_rgba(192,132,252,0.3)] border border-brand-purple/50">
-                    <div>
-                        <h2 class="font-serif text-4xl md:text-5xl text-white mb-2">My Lampstand</h2>
-                        <span class="text-xs font-bold tracking-[0.25em] text-brand-accent uppercase">App · Launching Soon</span>
-                    </div>
+    <section class="py-32 bg-[#FAFAFA] border-t border-gray-100">
+        <div class="max-w-[1100px] mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+            <div class="relative reveal-on-scroll">
+                <img src="assets/about-ronald.jpg" alt="Ronald Rotich" class="w-full rounded-sm grayscale shadow-lg hover:grayscale-0 transition duration-700">
+            </div>
+            
+            <div class="reveal-on-scroll delay-100">
+                <h2 class="text-xs font-bold tracking-[0.2em] text-brand-accent uppercase mb-4">About Ronald</h2>
+                <h3 class="font-serif text-3xl md:text-[38px] text-brand-primary mb-8 leading-tight">Built for this work.<br>Not trained for it — formed by it.</h3>
+                
+                <div class="text-brand-body space-y-6 font-light leading-relaxed mb-10">
+                    <p>I didn't arrive at this work through a course or a certification. I arrived through the same question that eventually confronts every serious leader: why do intelligent, capable, driven people keep getting in their own way?</p>
+                    <p>The answer I kept finding — in boardrooms, in coaching sessions, in strategy offsites across Africa and beyond — was always the same. It was never the plan that failed. It was the misalignment between what the leader knew in their head, what they felt in their heart, and what their gut was telling them.</p>
+                    <p>Over 15 years, I have refined a methodology for closing that gap. Not generically — but for this leader, this organisation, this moment. The work is precise, direct, and built for people who are serious about performing at their highest level.</p>
+                    <p>I hold a BA in Business Management (Finance) from Northumbria University, UK. I am an mBIT Certified Coach, NLP Master Practitioner, Systemic Team Coaching practitioner, and PQ Coach. I sit on the board of the Kenya Association of NLP as Director of Strategy.</p>
+                    <p class="font-serif italic text-xl text-brand-primary pt-2 border-l-2 border-brand-accent pl-4">I operate globally. I am based in Nairobi.</p>
                 </div>
-                <p class="text-white text-xl leading-relaxed mb-8 font-serif italic">
-                    The coaching room reaches hundreds. An app can reach millions.
-                </p>
-                <p class="text-gray-400 leading-relaxed mb-8 font-light text-lg">
-                    My Lampstand is built on a conviction: <span class="text-white font-medium">lasting habit change doesn't begin with behaviour — it begins with belief.</span> Drawing from the wisdom of biblical principles and the science of how the mind and emotions actually work, the app guides people through the inner shifts that make external change stick.
-                </p>
-                <p class="text-gray-400 leading-relaxed mb-12 font-light text-lg">
-                    It is the extension of the same architecture Ronald has applied with C-suite leaders — democratised, accessible, and built for the moment the world is in.
-                </p>
-                <blockquote class="font-serif text-2xl md:text-3xl text-brand-accent italic border-l-4 border-brand-purple pl-8 mb-14">
+                
+                <div class="flex flex-wrap gap-2">
+                    <span class="bg-brand-tint text-brand-primary text-xs px-3 py-1.5 rounded-full font-medium">Top Coach Globally 2021</span>
+                    <span class="bg-brand-tint text-brand-primary text-xs px-3 py-1.5 rounded-full font-medium">BMW Innovation Winner 2018</span>
+                    <span class="bg-brand-tint text-brand-primary text-xs px-3 py-1.5 rounded-full font-medium">mBIT Certified Coach</span>
+                    <span class="bg-brand-tint text-brand-primary text-xs px-3 py-1.5 rounded-full font-medium">NLP Master Practitioner</span>
+                    <span class="bg-brand-tint text-brand-primary text-xs px-3 py-1.5 rounded-full font-medium">Systemic Team Coaching</span>
+                    <span class="bg-brand-tint text-brand-primary text-xs px-3 py-1.5 rounded-full font-medium">PQ Coach</span>
+                    <span class="bg-brand-tint text-brand-primary text-xs px-3 py-1.5 rounded-full font-medium">Toastmasters Award Winner</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="lampstand" class="py-32 bg-white relative overflow-hidden">
+        <div class="max-w-[1100px] mx-auto px-6 grid md:grid-cols-2 gap-16 items-center relative z-10">
+            <div class="reveal-on-scroll">
+                <h2 class="text-xs font-bold tracking-[0.2em] text-brand-amber uppercase mb-4">New Venture — Launching Soon</h2>
+                <h3 class="font-serif text-5xl text-brand-primary mb-6">My Lampstand</h3>
+                <h4 class="text-xl text-brand-body font-medium mb-6">The coaching room reaches hundreds.<br>An app can reach millions.</h4>
+                
+                <div class="text-brand-muted space-y-6 font-light leading-relaxed mb-8">
+                    <p>My Lampstand is built on a conviction I have held for years: <span class="font-medium text-brand-body">lasting habit change doesn't begin with behaviour — it begins with belief.</span></p>
+                    <p>Most habit apps work on the surface. They track streaks, send reminders, and reward consistency. What they cannot do is reach the layer where behaviour actually originates — identity, belief, and the values that quietly govern every choice we make.</p>
+                    <p>My Lampstand bridges the wisdom of biblical principles with the science of how the mind and emotions actually work, guiding people through the inner shifts that make external change not just possible, but permanent.</p>
+                    <p>It is the same architecture I apply in the executive coaching room — democratised, accessible, and built for the moment the world is in.</p>
+                </div>
+                
+                <blockquote class="font-serif text-2xl text-brand-amber italic border-l-4 border-brand-amber pl-6 mb-8">
                     "What you do flows from who you believe you are."
                 </blockquote>
-                <a href="mailto:info@ronaldrotich.com?subject=My Lampstand Waitlist" class="bg-transparent border-2 border-brand-accent text-white px-10 py-4 rounded-sm font-bold tracking-wide hover:bg-brand-accent hover:text-black transition inline-block">
-                    Join the Waitlist
-                </a>
+                
+                <a href="mailto:info@ronaldrotich.com?subject=My Lampstand Waitlist" class="inline-block bg-brand-amber text-white px-8 py-3.5 rounded-sm font-bold tracking-wide hover:bg-yellow-600 transition shadow-lg shadow-brand-amber/30">Join the Waitlist</a>
+                <p class="text-xs text-brand-muted mt-3">Be the first to know when My Lampstand launches.</p>
             </div>
-            <div class="relative z-10 flex justify-center mt-10 md:mt-0">
-                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-brand-purple/40 blur-[120px] rounded-full -z-10"></div>
-                <img src="assets/lampstand-screen.png" alt="My Lampstand Interface" class="max-w-full md:max-w-md rounded-[3rem] border-[10px] border-[#1a1a1a] shadow-[0_20px_50px_rgba(0,0,0,0.5)] transform rotate-2 hover:rotate-0 transition duration-500">
+            
+            <div class="relative flex justify-center reveal-on-scroll delay-100">
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-brand-amber/10 blur-[80px] rounded-full -z-10"></div>
+                <img src="assets/lampstand-screen.png" alt="My Lampstand Interface" class="max-w-[300px] w-full rounded-[2rem] border-8 border-gray-900 shadow-2xl transform rotate-2 hover:rotate-0 transition duration-500">
             </div>
         </div>
     </section>
 
-    <section class="py-40 bg-gradient-to-b from-brand-dark to-[#1a0b2e] text-center border-t border-brand-purple/20">
-        <div class="max-w-4xl mx-auto px-6">
-            <h2 class="font-serif text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-10 leading-[1.1]">
+    <section id="contact" class="py-40 bg-brand-primary text-center">
+        <div class="max-w-[700px] mx-auto px-6 reveal-on-scroll">
+            <h2 class="font-serif text-5xl md:text-[56px] font-bold text-white mb-8 leading-[1.1]">
                 The next level of leadership is an inside job.<br>Let's build it.
             </h2>
-            <p class="text-2xl text-gray-300 mb-16 max-w-2xl mx-auto font-light italic">
-                This is not a conversation for people who are comfortable. It is a conversation for leaders who are ready.
+            <p class="text-lg text-brand-tint/80 mb-12 font-light max-w-[480px] mx-auto">
+                This is not a conversation for people who are comfortable where they are. It is a conversation for leaders who are ready to perform at the level their vision demands.
             </p>
-            <a href="mailto:info@ronaldrotich.com" class="bg-white text-brand-black px-12 py-5 rounded-sm font-bold text-lg hover:bg-gray-200 transition shadow-[0_0_40px_rgba(255,255,255,0.2)] inline-block mb-20 tracking-wide">
+            <a href="mailto:info@ronaldrotich.com" class="inline-block bg-white text-brand-primary px-12 py-4 rounded-sm font-bold text-lg hover:bg-brand-tint transition shadow-2xl mb-12 tracking-wide">
                 Book a Discovery Call
             </a>
-            <div class="flex flex-col md:flex-row justify-center items-center gap-8 text-xs font-semibold tracking-[0.2em] uppercase text-gray-500">
-                <a href="mailto:info@ronaldrotich.com" class="hover:text-brand-accent transition">info@ronaldrotich.com</a>
+            
+            <div class="flex flex-col md:flex-row justify-center items-center gap-6 text-sm font-medium text-brand-tint/70">
+                <a href="mailto:info@ronaldrotich.com" class="hover:text-white transition">info@ronaldrotich.com</a>
                 <span class="hidden md:inline">·</span>
-                <a href="tel:+254728578800" class="hover:text-brand-accent transition">+254 728 57 88 00</a>
+                <a href="tel:+254728578800" class="hover:text-white transition">+254 728 57 88 00</a>
                 <span class="hidden md:inline">·</span>
-                <a href="https://www.linkedin.com/in/ronaldrotich/" target="_blank" class="hover:text-brand-accent transition flex items-center gap-2"><i class="fa-brands fa-linkedin text-lg"></i> LinkedIn</a>
+                <a href="https://www.linkedin.com/in/ronaldrotich/" target="_blank" class="hover:text-white transition">linkedin.com/in/ronaldrotich</a>
             </div>
         </div>
     </section>
 
+    <section class="bg-brand-dark py-16 text-brand-tint/60 text-sm border-t border-white/5">
+        <div class="max-w-[1100px] mx-auto px-6 grid md:grid-cols-3 gap-12 mb-12">
+            <div>
+                <div class="font-serif text-2xl font-bold text-white mb-1">Ronald Rotich</div>
+                <div class="font-semibold text-brand-tint mb-1">Human Performance Strategist</div>
+                <div class="mb-4">Leadership & Brand Consultant</div>
+                <div class="text-xs uppercase tracking-widest text-brand-tint/40">The Architecture of Human Potential</div>
+            </div>
+            
+            <div>
+                <div class="font-bold text-white mb-4 uppercase tracking-wider text-xs">Navigate</div>
+                <ul class="space-y-2">
+                    <li><a href="#about" class="hover:text-white transition">About</a></li>
+                    <li><a href="#framework" class="hover:text-white transition">The Framework</a></li>
+                    <li><a href="#services" class="hover:text-white transition">Work With Me</a></li>
+                    <li><a href="#services" class="hover:text-white transition">Speaking</a></li>
+                    <li><a href="#lampstand" class="hover:text-brand-amber transition">My Lampstand</a></li>
+                    <li><a href="#contact" class="hover:text-white transition">Contact</a></li>
+                </ul>
+            </div>
+            
+            <div>
+                <div class="font-bold text-white mb-4 uppercase tracking-wider text-xs">Get in touch</div>
+                <ul class="space-y-2">
+                    <li><a href="mailto:info@ronaldrotich.com" class="hover:text-white transition">info@ronaldrotich.com</a></li>
+                    <li><a href="tel:+254728578800" class="hover:text-white transition">+254 728 57 88 00</a></li>
+                    <li><a href="https://www.linkedin.com/in/ronaldrotich/" target="_blank" class="hover:text-white transition">LinkedIn</a></li>
+                    <li><a href="#" class="hover:text-white transition">ronaldrotich.com</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="max-w-[1100px] mx-auto px-6 border-t border-white/10 pt-8 text-center text-xs">
+            &copy; 2026 Ronald Rotich. All rights reserved.
+        </div>
+    </section>
+
+    <script>
+        // Sticky Nav logic
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 20) {
+                nav.classList.add('scrolled-nav');
+            } else {
+                nav.classList.remove('scrolled-nav');
+            }
+        });
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.15
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target); // Only animate once
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal-on-scroll').forEach(element => {
+            observer.observe(element);
+        });
+    </script>
 </body>
 </html>
