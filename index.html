@@ -45,15 +45,18 @@
     <style>
         body { color: #1A1A2E; background-color: #FFFFFF; }
         
+        /* Subtle Texture Overlay for Hero */
         .hero-texture {
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
         }
 
+        /* Sticky Nav Shadow */
         .scrolled-nav {
             box-shadow: 0 4px 20px rgba(0,0,0,0.05);
             border-bottom: 1px solid rgba(60, 47, 130, 0.1);
         }
 
+        /* Scroll Animations */
         .reveal-on-scroll {
             opacity: 0;
             transform: translateY(30px);
@@ -64,10 +67,12 @@
             transform: translateY(0);
         }
         
+        /* Delay utility for grids */
         .delay-100 { transition-delay: 100ms; }
         .delay-200 { transition-delay: 200ms; }
         .delay-300 { transition-delay: 300ms; }
 
+        /* Diagnostic Modal Transitions */
         .diagnostic-card {
             transition: all 0.5s ease;
         }
@@ -170,9 +175,12 @@
 
                 <!-- STEP 2: TRANSITION TO FULL DIAGNOSTIC -->
                 <div id="step-bridge" class="hidden diagnostic-card text-center">
-                    <div class="mb-8"><i class="fa-solid fa-radar text-brand-accent text-5xl"></i></div>
-                    <h3 class="font-serif text-4xl text-brand-primary mb-6">That is just the surface signal.</h3>
-                    <p class="text-lg text-brand-muted mb-10 leading-relaxed max-w-[600px] mx-auto font-light">Your body is reporting a specific pressure state. To generate your full Leadership Radar and reveal your Strategic Archetype, we need to assess the 15 pillars of your Action Tendencies.</p>
+                    <h3 id="bridge-title" class="text-xs font-bold tracking-[0.2em] text-brand-amber uppercase mb-6">Analyzing Signal...</h3>
+                    <p id="bridge-desc" class="font-serif text-2xl md:text-3xl text-brand-primary mb-8 italic">...</p>
+                    
+                    <div class="h-px w-16 bg-brand-primary/10 mx-auto mb-8"></div>
+                    
+                    <p class="text-lg text-brand-muted mb-10 leading-relaxed max-w-[600px] mx-auto font-light">This is merely a surface symptom. To map the full architecture of your leadership tendencies and reveal your Strategic Archetype, proceed to the 15-pillar diagnostic.</p>
                     <button onclick="startFullDiagnostic()" class="bg-brand-primary text-white px-10 py-4 rounded-sm font-bold tracking-wide hover:bg-brand-accent transition shadow-lg">Start 15-Point Diagnostic</button>
                 </div>
 
@@ -714,6 +722,23 @@
         let scores = { head: 0, heart: 0, gut: 0 };
 
         function handleSignal(type) {
+            let title = "";
+            let description = "";
+
+            if (type === 'head') {
+                title = "LOGIC OVERDRIVE";
+                description = "Your physical response suggests your Head is attempting to intellectualize a problem your Gut has already solved. You may be looping data to avoid the perceived risk of action.";
+            } else if (type === 'heart') {
+                title = "CONNECTION WITHDRAWAL";
+                description = "Your system suggests your Heart is dimming to protect you from the emotional weight of the room. You may be subconsciously withdrawing to survive the conflict.";
+            } else if (type === 'gut') {
+                title = "INSTINCT COMPRESSION";
+                description = "Your system suggests your Gut is saturated. This physical knot is often pent-up execution energy, creating an urge to rush decisions just to break the pressure.";
+            }
+
+            document.getElementById('bridge-title').innerText = title;
+            document.getElementById('bridge-desc').innerText = `"${description}"`;
+
             document.getElementById('step-signal').classList.add('hidden');
             document.getElementById('step-bridge').classList.remove('hidden');
         }
