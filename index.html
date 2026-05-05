@@ -45,18 +45,15 @@
     <style>
         body { color: #1A1A2E; background-color: #FFFFFF; }
         
-        /* Subtle Texture Overlay for Hero */
         .hero-texture {
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
         }
 
-        /* Sticky Nav Shadow */
         .scrolled-nav {
             box-shadow: 0 4px 20px rgba(0,0,0,0.05);
             border-bottom: 1px solid rgba(60, 47, 130, 0.1);
         }
 
-        /* Scroll Animations */
         .reveal-on-scroll {
             opacity: 0;
             transform: translateY(30px);
@@ -67,12 +64,10 @@
             transform: translateY(0);
         }
         
-        /* Delay utility for grids */
         .delay-100 { transition-delay: 100ms; }
         .delay-200 { transition-delay: 200ms; }
         .delay-300 { transition-delay: 300ms; }
 
-        /* Diagnostic Modal Transitions */
         .diagnostic-card {
             transition: all 0.5s ease;
         }
@@ -177,7 +172,7 @@
                 <div id="step-bridge" class="hidden diagnostic-card text-center">
                     <div class="mb-8"><i class="fa-solid fa-radar text-brand-accent text-5xl"></i></div>
                     <h3 class="font-serif text-4xl text-brand-primary mb-6">That is just the surface signal.</h3>
-                    <p class="text-lg text-brand-muted mb-10 leading-relaxed max-w-[600px] mx-auto font-light">Your body is reporting a specific pressure state. To generate your full Leadership Radar and reveal your Strategic Archetype, we need to assess the 15 pillars of your Alignment Architecture.</p>
+                    <p class="text-lg text-brand-muted mb-10 leading-relaxed max-w-[600px] mx-auto font-light">Your body is reporting a specific pressure state. To generate your full Leadership Radar and reveal your Strategic Archetype, we need to assess the 15 pillars of your Action Tendencies.</p>
                     <button onclick="startFullDiagnostic()" class="bg-brand-primary text-white px-10 py-4 rounded-sm font-bold tracking-wide hover:bg-brand-accent transition shadow-lg">Start 15-Point Diagnostic</button>
                 </div>
 
@@ -203,7 +198,6 @@
                 <div id="step-results" class="hidden diagnostic-card">
                     <div class="grid md:grid-cols-2 gap-12 items-start">
                         
-                        <!-- Col 1: Radar & Scoreboard -->
                         <div>
                             <h2 class="text-xs font-bold tracking-[0.2em] text-brand-accent uppercase mb-2">Your Profile</h2>
                             <h3 id="res-archetype" class="font-serif text-3xl text-brand-primary mb-6">Determining Archetype...</h3>
@@ -212,7 +206,6 @@
                                 <canvas id="radarChart"></canvas>
                             </div>
 
-                            <!-- Executive Scoreboard -->
                             <div class="bg-gray-50 p-6 rounded-sm border border-gray-100">
                                 <h4 class="text-xs font-bold tracking-[0.2em] text-brand-muted uppercase mb-4">Executive Scoreboard</h4>
                                 <div class="space-y-3 font-medium text-sm">
@@ -232,11 +225,9 @@
                             </div>
                         </div>
 
-                        <!-- Col 2: Explanation & Breakdown -->
                         <div class="text-left">
                             <p id="res-description" class="text-brand-body leading-relaxed mb-8 font-medium italic border-l-2 border-brand-accent pl-6">Loading explanation...</p>
                             
-                            <!-- Detailed Intelligence Breakdown -->
                             <div class="space-y-6 mb-10">
                                 <div>
                                     <h5 class="text-brand-primary font-bold text-sm uppercase tracking-wider mb-2"><i class="fa-solid fa-brain text-brand-accent mr-2"></i> Logic</h5>
@@ -446,7 +437,7 @@
                 </blockquote>
                 
                 <p class="text-brand-tint/80 font-light leading-relaxed mb-8">
-                    High-stakes communication is about more than just your slides. It is about the resonance you create when you step into the room. Drawing from years of coaching speakers for platforms like <strong>Dadasphere</strong> and <strong>Enactus Kenya</strong>, and backed by my recognition as a Toastmasters Award Winner, I help leaders strip away the performance and find the true signal of their message.
+                    High-stakes communication is about more than just your slides. It is about the resonance you create when you step into the room. Drawing from years of coaching speakers for platforms like <strong>Dadasphere</strong> and <strong>Enactus Kenya</strong>, and backed by my recognition as a <strong>Toastmasters Award Winner</strong>, I help leaders strip away the performance and find the true signal of their message.
                 </p>
                 
                 <a href="#contact" class="inline-block border border-brand-accent text-brand-tint px-8 py-3.5 rounded-sm font-bold tracking-wide hover:bg-brand-accent hover:text-white transition shadow-lg">Book a Communication Audit</a>
@@ -472,6 +463,107 @@
                         <h5 class="text-white font-bold mb-2 flex items-center gap-3"><span class="text-brand-accent font-serif text-xl italic">04.</span> The Identity Check</h5>
                         <p class="text-brand-tint/70 text-sm font-light leading-relaxed pl-8 border-l border-white/10">Are you speaking because you feel you have something to <em>prove</em>, or because you genuinely have something of value to <em>share</em>? The audience can always feel the difference.</p>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-brand-primary text-white border-y border-brand-accent/30">
+        <div class="max-w-[1100px] mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-10 text-center divide-x divide-white/10">
+            <div class="reveal-on-scroll">
+                <div class="font-serif text-5xl md:text-6xl font-bold mb-3">300+</div>
+                <div class="text-xs uppercase tracking-widest text-brand-tint font-light">Leaders coached globally</div>
+            </div>
+            <div class="reveal-on-scroll delay-100">
+                <div class="font-serif text-5xl md:text-6xl font-bold mb-3">15+</div>
+                <div class="text-xs uppercase tracking-widest text-brand-tint font-light">Years at the intersection</div>
+            </div>
+            <div class="reveal-on-scroll delay-200">
+                <div class="font-serif text-5xl md:text-6xl font-bold mb-3">400+</div>
+                <div class="text-xs uppercase tracking-widest text-brand-tint font-light">Businesses scaled</div>
+            </div>
+            <div class="reveal-on-scroll delay-300">
+                <div class="font-serif text-5xl md:text-6xl font-bold mb-3">1M+</div>
+                <div class="text-xs uppercase tracking-widest text-brand-tint font-light">Audience reach created</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-32 bg-white">
+        <div class="max-w-[1100px] mx-auto px-6 text-center">
+            <h2 class="text-xs font-bold tracking-[0.2em] text-brand-muted uppercase mb-16 reveal-on-scroll">Trusted by</h2>
+            
+            <div class="flex flex-wrap justify-center items-center gap-x-12 gap-y-8 opacity-60 hover:opacity-100 transition duration-500 mb-24 reveal-on-scroll delay-100">
+                <img src="assets/logo-mastercard.svg" alt="Trusted by Global Organizations" class="h-12 md:h-16 w-auto object-contain grayscale hover:grayscale-0 transition duration-500">
+                
+                <div class="text-sm font-bold text-gray-400 uppercase tracking-widest">Mastercard Foundation</div>
+                <div class="text-sm font-bold text-gray-400 uppercase tracking-widest">Old Mutual</div>
+                <div class="text-sm font-bold text-gray-400 uppercase tracking-widest">Stanbic Bank</div>
+                <div class="text-sm font-bold text-gray-400 uppercase tracking-widest">JamboJet</div>
+                <div class="text-sm font-bold text-gray-400 uppercase tracking-widest">Oracle</div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 text-left">
+                <div class="bg-brand-tint p-8 rounded-sm reveal-on-scroll">
+                    <i class="fa-solid fa-quote-left text-3xl text-brand-primary/20 mb-4"></i>
+                    <p class="font-serif text-lg text-brand-primary leading-relaxed mb-8 italic">
+                        "He is an exceptional storyteller and coach in public speaking & leadership development… His coaching approach has significantly transformed my perspective on communication and leading with impact."
+                    </p>
+                    <div>
+                        <div class="font-bold text-brand-primary text-sm">Harriet Mwangi</div>
+                        <div class="text-xs text-brand-muted">Regional Applications Leader — Africa Emerging Countries, Oracle</div>
+                    </div>
+                </div>
+                <div class="bg-white border border-brand-primary/20 p-8 rounded-sm reveal-on-scroll delay-100 shadow-sm">
+                    <i class="fa-solid fa-quote-left text-3xl text-brand-primary/20 mb-4"></i>
+                    <p class="font-serif text-lg text-brand-primary leading-relaxed mb-8 italic">
+                        "He has had a very positive impact on my professional and personal growth… he pointed out growth areas while making you feel accomplished."
+                    </p>
+                    <div>
+                        <div class="font-bold text-brand-primary text-sm">Hellen Kangiri</div>
+                        <div class="text-xs text-brand-muted">Organizational Development Specialist</div>
+                    </div>
+                </div>
+                <div class="bg-brand-tint p-8 rounded-sm reveal-on-scroll delay-200">
+                    <i class="fa-solid fa-quote-left text-3xl text-brand-primary/20 mb-4"></i>
+                    <p class="font-serif text-lg text-brand-primary leading-relaxed mb-8 italic">
+                        "His understanding of human psychology that underpins the fear of public speaking was remarkable."
+                    </p>
+                    <div>
+                        <div class="font-bold text-brand-primary text-sm">Esther Masese</div>
+                        <div class="text-xs text-brand-muted">Chief Financial Services Officer, Safaricom</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-32 bg-[#FAFAFA] border-t border-gray-100">
+        <div class="max-w-[1100px] mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+            <div class="relative reveal-on-scroll">
+                <img src="assets/about-ronald.jpg" alt="Ronald Rotich" class="w-full rounded-sm grayscale shadow-lg hover:grayscale-0 transition duration-700">
+            </div>
+            
+            <div class="reveal-on-scroll delay-100">
+                <h2 class="text-xs font-bold tracking-[0.2em] text-brand-accent uppercase mb-4">About Ronald</h2>
+                <h3 class="font-serif text-3xl md:text-[38px] text-brand-primary mb-8 leading-tight">Built for this work.<br>Not trained for it — formed by it.</h3>
+                
+                <div class="text-brand-body space-y-6 font-light leading-relaxed mb-10">
+                    <p>I didn't arrive at this work through a course or a certification. I arrived through the same question that eventually confronts every serious leader: why do intelligent, capable, driven people keep getting in their own way?</p>
+                    <p>The answer I kept finding — in boardrooms, in coaching sessions, in strategy offsites across Africa and beyond — was always the same. It was never the plan that failed. It was the misalignment between what the leader knew in their head, what they felt in their heart, and what their gut was telling them.</p>
+                    <p>Over 15 years, I have refined a methodology for closing that gap. Not generically — but for this leader, this organisation, this moment. The work is precise, direct, and built for people who are serious about performing at their highest level.</p>
+                    <p>I hold a BA in Business Management (Finance) from Northumbria University, UK. I am an mBIT Certified Coach, NLP Master Practitioner, Systemic Team Coaching practitioner, and PQ Coach. I sit on the board of the Kenya Association of NLP as Director of Strategy.</p>
+                    <p class="font-serif italic text-xl text-brand-primary pt-2 border-l-2 border-brand-accent pl-4">I operate globally. I am based in Nairobi.</p>
+                </div>
+                
+                <div class="flex flex-wrap gap-2">
+                    <span class="bg-brand-tint text-brand-primary text-xs px-3 py-1.5 rounded-full font-medium">Top Coach Globally 2021</span>
+                    <span class="bg-brand-tint text-brand-primary text-xs px-3 py-1.5 rounded-full font-medium">BMW Innovation Winner 2018</span>
+                    <span class="bg-brand-tint text-brand-primary text-xs px-3 py-1.5 rounded-full font-medium">mBIT Certified Coach</span>
+                    <span class="bg-brand-tint text-brand-primary text-xs px-3 py-1.5 rounded-full font-medium">NLP Master Practitioner</span>
+                    <span class="bg-brand-tint text-brand-primary text-xs px-3 py-1.5 rounded-full font-medium">Systemic Team Coaching</span>
+                    <span class="bg-brand-tint text-brand-primary text-xs px-3 py-1.5 rounded-full font-medium">PQ Coach</span>
+                    <span class="bg-brand-tint text-brand-primary text-xs px-3 py-1.5 rounded-full font-medium">Toastmasters Award Winner</span>
                 </div>
             </div>
         </div>
@@ -599,22 +691,23 @@
         });
 
         // 3. Diagnostic Engine Data & Logic
+        // Questions scrambled to prevent pattern recognition. Focus on Action Tendencies.
         const questions = [
-            { text: "When a critical decision is required, I often find myself endlessly analyzing data to avoid the 'risk' of a wrong move.", center: 'head' },
-            { text: "I sometimes feel like I'm wearing a 'mask'—defending corporate strategies that contradict my personal values.", center: 'heart' },
-            { text: "My team often struggles to keep up with my sudden pivots or high-velocity 'gut' decisions.", center: 'gut' },
-            { text: "I struggle to move from strategy to execution because I feel I don't have enough information yet.", center: 'head' },
-            { text: "I prioritize maintaining harmony in the room over speaking hard truths that need to be heard.", center: 'heart' },
-            { text: "I possess a high urge to 'just finish it' and move on, even if the strategic details aren't fully resolved.", center: 'gut' },
-            { text: "My strategic clarity disappears when I am under extreme emotional or social pressure.", center: 'head' },
-            { text: "I feel isolated from my leadership team, even when we are physically in the same room.", center: 'heart' },
-            { text: "I have noticed a wake of 'collateral damage'—burnt out staff or broken processes—following my successful wins.", center: 'gut' },
-            { text: "I often intellectualize my instincts, trying to find a logical reason for a feeling I can't explain.", center: 'head' },
-            { text: "I carry the emotional weight of the office home with me, struggling to disconnect from people's problems.", center: 'heart' },
-            { text: "I find myself making impulsive calls just to break the tension of waiting for others to catch up.", center: 'gut' },
-            { text: "I am more comfortable with spreadsheets and models than with the 'messy' emotional reality of my culture.", center: 'head' },
-            { text: "I check out mentally during high-stakes conflict to avoid the discomfort of a heavy chest or knot in the gut.", center: 'heart' },
-            { text: "I trust my instincts 100%, even when the data or my team suggests I am overlooking a critical flaw.", center: 'gut' }
+            { text: "In a crisis, my immediate default is to take swift action and course-correct on the fly.", center: 'gut' },
+            { text: "I strongly prefer to have empirical evidence or a proven model before I commit to a new strategic direction.", center: 'head' },
+            { text: "I will delay a profitable strategic move if I feel it fundamentally violates our corporate culture or values.", center: 'heart' },
+            { text: "I become visibly frustrated when committees or endless discussions delay execution.", center: 'gut' },
+            { text: "I am often the person in the room slowing the team down to ensure we haven't missed a critical logical flaw.", center: 'head' },
+            { text: "In a crisis, my immediate default is to check the pulse of the room and ensure my team feels secure.", center: 'heart' },
+            { text: "I frequently make high-stakes decisions based on a 'gut read' even when the data is incomplete.", center: 'gut' },
+            { text: "I separate my personal feelings from business decisions easily; the math has to make sense.", center: 'head' },
+            { text: "I am highly attuned to the unspoken emotional dynamics in a boardroom or executive meeting.", center: 'heart' },
+            { text: "I am highly comfortable with risk and often feel an internal urge to just 'pull the trigger' and move.", center: 'gut' },
+            { text: "If a strategy fails, my first instinct is to audit the data and rewrite the plan.", center: 'head' },
+            { text: "People often come to me for mentorship and emotional grounding, not just strategic advice.", center: 'heart' },
+            { text: "If a strategy fails, my first instinct is to pivot rapidly and try the next tactic without overthinking it.", center: 'gut' },
+            { text: "In a crisis, my immediate default is to gather data, build frameworks, and map out scenarios.", center: 'head' },
+            { text: "If a strategy fails, my first instinct is to check if we lost alignment and trust as a team.", center: 'heart' }
         ];
 
         let currentQ = 0;
@@ -651,70 +744,97 @@
             document.getElementById('step-questions').classList.add('hidden');
             document.getElementById('step-results').classList.remove('hidden');
             
-            // Calculate Percentages
+            // Calculate Percentages (25 max points per center)
             const headScore = Math.round((scores.head / 25) * 100);
             const heartScore = Math.round((scores.heart / 25) * 100);
             const gutScore = Math.round((scores.gut / 25) * 100);
 
-            // Determine State
-            const getState = (score) => {
-                if (score >= 75) return "Overdrive";
-                if (score < 50) return "Dimming";
-                return "Aligned";
-            };
+            // Relative Scoring Logic (Spread Calculation)
+            const maxScore = Math.max(headScore, heartScore, gutScore);
+            const minScore = Math.min(headScore, heartScore, gutScore);
+            const spread = maxScore - minScore;
 
-            const headState = getState(headScore);
-            const heartState = getState(heartScore);
-            const gutState = getState(gutScore);
+            let headState, heartState, gutState;
+            let arch = "";
+            let desc = "";
+
+            if (maxScore < 45) {
+                headState = heartState = gutState = "Depleted";
+                arch = "The Depleted Leader";
+                desc = "Your system is experiencing systemic burnout. Signal loss is occurring across all intelligence centers, requiring immediate regulation and recovery before strategic decision-making can safely resume.";
+            } else if (spread <= 15) {
+                headState = heartState = gutState = "Aligned";
+                arch = "The Integrated Leader";
+                desc = "Your intelligence centers are highly aligned. You balance logic, values, and instinct effectively, leading with absolute clarity and integrated decision-making.";
+            } else {
+                // Determine individual states based on relation to the highest and lowest scores
+                const getState = (score) => {
+                    if (score >= maxScore - 10) return "Overdrive";
+                    if (score <= minScore + 10) return "Dimming";
+                    return "Aligned"; 
+                };
+
+                headState = getState(headScore);
+                heartState = getState(heartScore);
+                gutState = getState(gutScore);
+
+                // Assign Archetypes based on dominant tendencies
+                if (headState === "Overdrive" && gutState !== "Overdrive" && heartState !== "Overdrive") {
+                    arch = "The Theoretical Architect";
+                    desc = "Your Logic center is dictating your leadership. You have excellent strategic vision, but because your other centers are dimming, your team likely experiences your leadership as cold or overly critical. You have compliance, but you do not have commitment.";
+                } else if (gutState === "Overdrive" && headState !== "Overdrive" && heartState !== "Overdrive") {
+                    arch = "The Reactive Catalyst";
+                    desc = "Your Instinct center is dictating your leadership. You are high-velocity and fearless, but because you bypass strategic rigour and emotional buy-in, you are likely leaving a wake of collateral damage and burnt-out teams.";
+                } else if (heartState === "Overdrive" && headState !== "Overdrive" && gutState !== "Overdrive") {
+                    arch = "The Empathetic Martyr";
+                    desc = "Your Connection center is dictating your leadership. You prioritize harmony and emotional safety, but because your logical and instinctual boundaries are dimming, you struggle to make the hard calls required for growth.";
+                } else if (headState === "Overdrive" && gutState === "Overdrive") {
+                    arch = "The Calculated Machine";
+                    desc = "You balance strategy and execution brilliantly, but your Connection (Heart) is dimming. You drive results effectively, but your people may feel like cogs in a machine rather than valued team members.";
+                } else if (headState === "Overdrive" && heartState === "Overdrive") {
+                    arch = "The Visionary Idealist";
+                    desc = "You create inspiring, values-aligned strategies, but your Execution (Gut) is dimming. You have massive buy-in, but struggle to pull the trigger and move from planning to action.";
+                } else if (heartState === "Overdrive" && gutState === "Overdrive") {
+                    arch = "The Passionate Gladiator";
+                    desc = "You lead with intense passion and rapid execution, but your Strategy (Head) is dimming. You rally people easily, but you may be charging confidently in the wrong direction.";
+                } else {
+                    arch = "The Transitioning Leader";
+                    desc = "Your leadership architecture is currently in a state of flux, leaning heavily on your primary center while actively trying to integrate the others.";
+                }
+            }
 
             // Update Scoreboard UI
             document.getElementById('score-head').innerText = `${headScore}% — ${headState}`;
             document.getElementById('score-heart').innerText = `${heartScore}% — ${heartState}`;
             document.getElementById('score-gut').innerText = `${gutScore}% — ${gutState}`;
-
-            // Archetype Logic
-            let arch = "";
-            let desc = "";
-
-            if (headScore >= 75 && heartScore < 60 && gutScore < 60) {
-                arch = "The Theoretical Architect";
-                desc = "Your strategy is impeccable, but it stays in the boardroom. You are intellectualising risks until the window of opportunity closes. You have the 'right' answer, but struggle to move the 'Gut' to execute.";
-            } else if (gutScore >= 75 && headScore < 60 && heartScore < 60) {
-                arch = "The Reactive Catalyst";
-                desc = "You are high-velocity and fearless. However, because your Gut is pulling the trigger alone, you often bypass strategic rigour. You likely feel others are 'too slow', but you are leaving collateral damage in your wake.";
-            } else if (heartScore >= 75 && headScore < 60 && gutScore < 60) {
-                arch = "The Empathetic Martyr";
-                desc = "You prioritize harmony over hard truths. You are carrying the emotional weight of the team while results slip. You know what needs to be said, but you check out mentally to avoid conflict.";
-            } else {
-                arch = "The Developing Integrated Leader";
-                desc = "You are working across multiple intelligence centers. Your architecture is evolving toward Absolute Clarity. You have the potential to make calls that are strategically sound and humanly resonant.";
-            }
-
             document.getElementById('res-archetype').innerText = arch;
             document.getElementById('res-description').innerText = desc;
 
-            // 3-Part Intelligence Breakdown
+            // 3-Part Intelligence Breakdown Strings
             const headTexts = {
-                "Overdrive": "Your Logic center is in overdrive. You process data brilliantly, but you are likely using strategy as a shield against making a difficult execution call.",
+                "Overdrive": "Your Logic center is dictating your approach. You process data brilliantly, but you are likely using strategy and endless planning as a shield against making a difficult execution call.",
                 "Aligned": "Your Logic center is highly aligned. You use data to inform your strategy without getting stuck in analysis paralysis.",
-                "Dimming": "Your Logic center is dimming. You might be ignoring hard data or strategic frameworks, relying too heavily on instinct or consensus."
+                "Dimming": "Your Logic center is dimming. You might be ignoring hard data or strategic frameworks, relying too heavily on unverified instinct or consensus.",
+                "Depleted": "Your logic center is depleted. Strategic thinking currently feels exhausting."
             };
             const heartTexts = {
-                "Overdrive": "Your Connection center is in overdrive. You are prioritizing harmony and people-pleasing over speaking the hard truths required for growth.",
+                "Overdrive": "Your Connection center is dictating your approach. You are prioritizing harmony and people-pleasing over speaking the hard truths required for growth.",
                 "Aligned": "Your Connection center is perfectly aligned. You lead with high trust and empathy, ensuring your team is committed rather than just compliant.",
-                "Dimming": "Your Connection center is dimming. Your team likely views your directives as sound but cold, leading to compliance rather than true commitment."
+                "Dimming": "Your Connection center is dimming. Your team likely views your directives as sound but cold, leading to compliance rather than true commitment.",
+                "Depleted": "Your connection center is depleted. You are likely feeling emotionally detached or burnt out."
             };
             const gutTexts = {
-                "Overdrive": "Your Instinct center is in overdrive. You are moving at a high velocity, but your impulsive decisions may be leaving collateral damage and confused teams in your wake.",
+                "Overdrive": "Your Instinct center is dictating your approach. You are moving at a high velocity, but your impulsive decisions may be leaving collateral damage and confused teams in your wake.",
                 "Aligned": "Your Instinct center is beautifully aligned. You have the courage to make hard calls and execute decisively when the time is right.",
-                "Dimming": "Your Instinct center is dimming. You know what needs to be done, but you are hesitating to pull the trigger and execute."
+                "Dimming": "Your Instinct center is dimming. You know what needs to be done, but you are hesitating to pull the trigger and execute.",
+                "Depleted": "Your instinct center is depleted. You are struggling to find the energy to take decisive action."
             };
 
             document.getElementById('breakdown-head').innerText = headTexts[headState];
             document.getElementById('breakdown-heart').innerText = heartTexts[heartState];
             document.getElementById('breakdown-gut').innerText = gutTexts[gutState];
 
-            // Render Chart
+            // Render Radar Chart
             const ctx = document.getElementById('radarChart').getContext('2d');
             new Chart(ctx, {
                 type: 'radar',
