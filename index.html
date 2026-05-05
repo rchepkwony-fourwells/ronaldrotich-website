@@ -198,18 +198,59 @@
                     </div>
                 </div>
 
-                <!-- STEP 4: RADAR RESULTS -->
+                <!-- STEP 4: RADAR RESULTS & SCOREBOARD -->
                 <div id="step-results" class="hidden diagnostic-card">
-                    <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div class="grid md:grid-cols-2 gap-12 items-start">
+                        
+                        <!-- Col 1: Radar & Scoreboard -->
                         <div>
                             <h2 class="text-xs font-bold tracking-[0.2em] text-brand-accent uppercase mb-2">Your Profile</h2>
                             <h3 id="res-archetype" class="font-serif text-3xl text-brand-primary mb-6">Determining Archetype...</h3>
-                            <div class="max-w-[320px] mx-auto md:mx-0">
+                            
+                            <div class="max-w-[320px] mx-auto md:mx-0 mb-8">
                                 <canvas id="radarChart"></canvas>
                             </div>
+
+                            <!-- Executive Scoreboard -->
+                            <div class="bg-gray-50 p-6 rounded-sm border border-gray-100">
+                                <h4 class="text-xs font-bold tracking-[0.2em] text-brand-muted uppercase mb-4">Executive Scoreboard</h4>
+                                <div class="space-y-3 font-medium text-sm">
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-brand-primary">Head (Logic)</span> 
+                                        <span id="score-head" class="text-brand-accent font-bold">--%</span>
+                                    </div>
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-brand-primary">Heart (Values)</span> 
+                                        <span id="score-heart" class="text-brand-accent font-bold">--%</span>
+                                    </div>
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-brand-primary">Gut (Instinct)</span> 
+                                        <span id="score-gut" class="text-brand-accent font-bold">--%</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+
+                        <!-- Col 2: Explanation & Breakdown -->
                         <div class="text-left">
-                            <p id="res-description" class="text-brand-body leading-relaxed mb-8 font-light italic border-l-2 border-brand-accent pl-6">Loading explanation...</p>
+                            <p id="res-description" class="text-brand-body leading-relaxed mb-8 font-medium italic border-l-2 border-brand-accent pl-6">Loading explanation...</p>
+                            
+                            <!-- Detailed Intelligence Breakdown -->
+                            <div class="space-y-6 mb-10">
+                                <div>
+                                    <h5 class="text-brand-primary font-bold text-sm uppercase tracking-wider mb-2"><i class="fa-solid fa-brain text-brand-accent mr-2"></i> Logic</h5>
+                                    <p id="breakdown-head" class="text-brand-muted font-light text-sm leading-relaxed">Loading logic analysis...</p>
+                                </div>
+                                <div>
+                                    <h5 class="text-brand-primary font-bold text-sm uppercase tracking-wider mb-2"><i class="fa-solid fa-heart text-brand-accent mr-2"></i> Values</h5>
+                                    <p id="breakdown-heart" class="text-brand-muted font-light text-sm leading-relaxed">Loading values analysis...</p>
+                                </div>
+                                <div>
+                                    <h5 class="text-brand-primary font-bold text-sm uppercase tracking-wider mb-2"><i class="fa-solid fa-bolt text-brand-accent mr-2"></i> Instinct</h5>
+                                    <p id="breakdown-gut" class="text-brand-muted font-light text-sm leading-relaxed">Loading instinct analysis...</p>
+                                </div>
+                            </div>
+
                             <div class="flex flex-col gap-4">
                                 <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://ronaldrotich.com" target="_blank" class="text-center bg-[#0077b5] text-white py-3.5 rounded-sm text-sm font-bold tracking-wide flex items-center justify-center gap-2 hover:bg-[#005582] transition">
                                     <i class="fa-brands fa-linkedin text-lg"></i> Share Result to LinkedIn
@@ -664,20 +705,38 @@
             document.getElementById('step-questions').classList.add('hidden');
             document.getElementById('step-results').classList.remove('hidden');
             
-            const head = (scores.head / 25) * 100;
-            const heart = (scores.heart / 25) * 100;
-            const gut = (scores.gut / 25) * 100;
+            // Calculate Percentages
+            const headScore = Math.round((scores.head / 25) * 100);
+            const heartScore = Math.round((scores.heart / 25) * 100);
+            const gutScore = Math.round((scores.gut / 25) * 100);
 
+            // Determine State
+            const getState = (score) => {
+                if (score >= 75) return "Overdrive";
+                if (score < 50) return "Dimming";
+                return "Aligned";
+            };
+
+            const headState = getState(headScore);
+            const heartState = getState(heartScore);
+            const gutState = getState(gutScore);
+
+            // Update Scoreboard UI
+            document.getElementById('score-head').innerText = `${headScore}% — ${headState}`;
+            document.getElementById('score-heart').innerText = `${heartScore}% — ${heartState}`;
+            document.getElementById('score-gut').innerText = `${gutScore}% — ${gutState}`;
+
+            // Archetype Logic
             let arch = "";
             let desc = "";
 
-            if (head >= 75 && heart < 60 && gut < 60) {
+            if (headScore >= 75 && heartScore < 60 && gutScore < 60) {
                 arch = "The Theoretical Architect";
                 desc = "Your strategy is impeccable, but it stays in the boardroom. You are intellectualising risks until the window of opportunity closes. You have the 'right' answer, but struggle to move the 'Gut' to execute.";
-            } else if (gut >= 75 && head < 60 && heart < 60) {
+            } else if (gutScore >= 75 && headScore < 60 && heartScore < 60) {
                 arch = "The Reactive Catalyst";
                 desc = "You are high-velocity and fearless. However, because your Gut is pulling the trigger alone, you often bypass strategic rigour. You likely feel others are 'too slow', but you are leaving collateral damage in your wake.";
-            } else if (heart >= 75 && head < 60 && gut < 60) {
+            } else if (heartScore >= 75 && headScore < 60 && gutScore < 60) {
                 arch = "The Empathetic Martyr";
                 desc = "You prioritize harmony over hard truths. You are carrying the emotional weight of the team while results slip. You know what needs to be said, but you check out mentally to avoid conflict.";
             } else {
@@ -688,6 +747,28 @@
             document.getElementById('res-archetype').innerText = arch;
             document.getElementById('res-description').innerText = desc;
 
+            // 3-Part Intelligence Breakdown
+            const headTexts = {
+                "Overdrive": "Your Logic center is in overdrive. You process data brilliantly, but you are likely using strategy as a shield against making a difficult execution call.",
+                "Aligned": "Your Logic center is highly aligned. You use data to inform your strategy without getting stuck in analysis paralysis.",
+                "Dimming": "Your Logic center is dimming. You might be ignoring hard data or strategic frameworks, relying too heavily on instinct or consensus."
+            };
+            const heartTexts = {
+                "Overdrive": "Your Connection center is in overdrive. You are prioritizing harmony and people-pleasing over speaking the hard truths required for growth.",
+                "Aligned": "Your Connection center is perfectly aligned. You lead with high trust and empathy, ensuring your team is committed rather than just compliant.",
+                "Dimming": "Your Connection center is dimming. Your team likely views your directives as sound but cold, leading to compliance rather than true commitment."
+            };
+            const gutTexts = {
+                "Overdrive": "Your Instinct center is in overdrive. You are moving at a high velocity, but your impulsive decisions may be leaving collateral damage and confused teams in your wake.",
+                "Aligned": "Your Instinct center is beautifully aligned. You have the courage to make hard calls and execute decisively when the time is right.",
+                "Dimming": "Your Instinct center is dimming. You know what needs to be done, but you are hesitating to pull the trigger and execute."
+            };
+
+            document.getElementById('breakdown-head').innerText = headTexts[headState];
+            document.getElementById('breakdown-heart').innerText = heartTexts[heartState];
+            document.getElementById('breakdown-gut').innerText = gutTexts[gutState];
+
+            // Render Chart
             const ctx = document.getElementById('radarChart').getContext('2d');
             new Chart(ctx, {
                 type: 'radar',
@@ -695,7 +776,7 @@
                     labels: ['Head (Logic)', 'Heart (Values)', 'Gut (Instinct)'],
                     datasets: [{
                         label: 'Alignment Signal',
-                        data: [head, heart, gut],
+                        data: [headScore, heartScore, gutScore],
                         backgroundColor: 'rgba(107, 88, 200, 0.2)',
                         borderColor: '#6B58C8',
                         borderWidth: 2,
