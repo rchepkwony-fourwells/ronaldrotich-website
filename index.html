@@ -14,6 +14,9 @@
     
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     
+    <!-- Chart.js for the Radar Chart Visualization -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -68,6 +71,11 @@
         .delay-100 { transition-delay: 100ms; }
         .delay-200 { transition-delay: 200ms; }
         .delay-300 { transition-delay: 300ms; }
+
+        /* Diagnostic Modal Transitions */
+        .diagnostic-card {
+            transition: all 0.5s ease;
+        }
     </style>
 </head>
 <body class="antialiased font-sans selection:bg-brand-primary selection:text-white">
@@ -81,10 +89,10 @@
             
             <div class="hidden lg:flex space-x-8 items-center text-sm font-medium text-brand-body">
                 <a href="#about" class="hover:text-brand-accent transition">About</a>
+                <a href="#diagnostic" class="hover:text-brand-accent transition">Diagnostic</a>
                 <a href="#framework" class="hover:text-brand-accent transition">The Framework</a>
                 <a href="#services" class="hover:text-brand-accent transition">Work With Me</a>
-                <a href="#services" class="hover:text-brand-accent transition">Speaking</a>
-                <a href="#lampstand" class="hover:text-brand-accent transition text-brand-amber font-semibold"><i class="fa-solid fa-bolt mr-1"></i> My Lampstand</a>
+                <a href="#lampstand" class="hover:text-brand-accent transition text-brand-amber font-semibold"><i class="fa-solid fa-bolt mr-1"></i> MY Lampstand</a>
             </div>
 
             <a href="#contact" class="hidden md:inline-block bg-brand-primary hover:bg-brand-accent text-white px-6 py-2.5 rounded-sm text-sm font-semibold tracking-wide transition shadow-lg shadow-brand-primary/20">
@@ -120,7 +128,7 @@
                 
                 <div class="flex flex-col sm:flex-row justify-center gap-4 mb-10">
                     <a href="#services" class="bg-brand-primary text-white px-10 py-4 rounded-sm font-semibold tracking-wide hover:bg-brand-accent transition shadow-lg shadow-brand-primary/20">Work With Ronald</a>
-                    <a href="#framework" class="border-2 border-brand-primary/20 text-brand-primary px-10 py-4 rounded-sm font-semibold tracking-wide hover:bg-brand-tint transition">See the Framework</a>
+                    <a href="#diagnostic" class="border-2 border-brand-primary/20 text-brand-primary px-10 py-4 rounded-sm font-semibold tracking-wide hover:bg-brand-tint transition">The Alignment Diagnostic</a>
                 </div>
                 
                 <div class="text-xs font-semibold tracking-widest text-brand-muted uppercase flex flex-wrap justify-center gap-x-3 gap-y-3 items-center">
@@ -135,6 +143,85 @@
             <div class="w-full bg-brand-tint py-8 px-6 md:px-12 rounded-sm border border-brand-primary/5 reveal-on-scroll text-center">
                 <p class="font-serif text-xl md:text-2xl text-brand-primary italic mb-4">"His coaching approach has significantly transformed my perspective on communication and leading with impact."</p>
                 <p class="text-xs font-bold tracking-widest text-brand-muted uppercase">Harriet Mwangi — Regional Applications Leader, Africa Emerging Countries, Oracle</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- THE ALIGNMENT DIAGNOSTIC ENGINE -->
+    <section id="diagnostic" class="py-32 bg-[#FAFAFA] border-y border-gray-100">
+        <div class="max-w-[900px] mx-auto px-6 reveal-on-scroll">
+            <div id="diag-container" class="bg-white p-10 md:p-16 rounded-sm shadow-xl border border-gray-100 relative overflow-hidden min-h-[500px] flex flex-col justify-center">
+                
+                <!-- STEP 1: SIGNAL CHECK -->
+                <div id="step-signal" class="diagnostic-card">
+                    <h2 class="text-xs font-bold tracking-[0.2em] text-brand-accent uppercase mb-4">The Signal Check</h2>
+                    <h3 class="font-serif text-3xl md:text-4xl text-brand-primary mb-8 leading-tight">Think about your highest-stakes meeting this week. As you visualize walking into that room, what is your body telling you?</h3>
+                    <div class="space-y-4">
+                        <button onclick="handleSignal('head')" class="w-full text-left p-6 border border-gray-200 rounded-sm hover:border-brand-accent hover:bg-brand-tint transition duration-300">
+                            <span class="block font-bold text-brand-primary mb-1">Option A</span>
+                            <span class="text-brand-muted font-light">Tight jaw, shallow breathing, internal 'looping' strategy.</span>
+                        </button>
+                        <button onclick="handleSignal('heart')" class="w-full text-left p-6 border border-gray-200 rounded-sm hover:border-brand-accent hover:bg-brand-tint transition duration-300">
+                            <span class="block font-bold text-brand-primary mb-1">Option B</span>
+                            <span class="text-brand-muted font-light">Heavy chest, 'checking out' mentally, feeling isolated from the team.</span>
+                        </button>
+                        <button onclick="handleSignal('gut')" class="w-full text-left p-6 border border-gray-200 rounded-sm hover:border-brand-accent hover:bg-brand-tint transition duration-300">
+                            <span class="block font-bold text-brand-primary mb-1">Option C</span>
+                            <span class="text-brand-muted font-light">Knot in stomach, restless hands, urge to 'just finish it' and move.</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- STEP 2: TRANSITION TO FULL DIAGNOSTIC -->
+                <div id="step-bridge" class="hidden diagnostic-card text-center">
+                    <div class="mb-8"><i class="fa-solid fa-radar text-brand-accent text-5xl"></i></div>
+                    <h3 class="font-serif text-4xl text-brand-primary mb-6">That is just the surface signal.</h3>
+                    <p class="text-lg text-brand-muted mb-10 leading-relaxed max-w-[600px] mx-auto font-light">Your body is reporting a specific pressure state. To generate your full Leadership Radar and reveal your Strategic Archetype, we need to assess the 15 pillars of your Alignment Architecture.</p>
+                    <button onclick="startFullDiagnostic()" class="bg-brand-primary text-white px-10 py-4 rounded-sm font-bold tracking-wide hover:bg-brand-accent transition shadow-lg">Start 15-Point Diagnostic</button>
+                </div>
+
+                <!-- STEP 3: 15-QUESTION FLOW -->
+                <div id="step-questions" class="hidden diagnostic-card">
+                    <div class="mb-8 flex justify-between items-center border-b border-gray-100 pb-4">
+                        <span id="q-progress-text" class="text-xs font-bold text-brand-accent uppercase tracking-widest">Question 1 of 15</span>
+                        <div class="w-32 h-1 bg-gray-100 rounded-full overflow-hidden">
+                            <div id="q-progress-bar" class="h-full bg-brand-accent transition-all duration-300" style="width: 6.6%"></div>
+                        </div>
+                    </div>
+                    <h3 id="q-text" class="font-serif text-2xl md:text-3xl text-brand-primary mb-10 leading-snug min-h-[80px]">Loading question...</h3>
+                    <div class="grid grid-cols-1 gap-3">
+                        <button onclick="recordAnswer(5)" class="w-full p-4 border border-gray-200 rounded-sm hover:border-brand-accent hover:bg-brand-tint transition text-left text-brand-primary font-medium">Strongly Agree</button>
+                        <button onclick="recordAnswer(4)" class="w-full p-4 border border-gray-200 rounded-sm hover:border-brand-accent hover:bg-brand-tint transition text-left text-brand-primary font-medium">Agree</button>
+                        <button onclick="recordAnswer(3)" class="w-full p-4 border border-gray-200 rounded-sm hover:border-brand-accent hover:bg-brand-tint transition text-left text-brand-primary font-medium">Neutral</button>
+                        <button onclick="recordAnswer(2)" class="w-full p-4 border border-gray-200 rounded-sm hover:border-brand-accent hover:bg-brand-tint transition text-left text-brand-primary font-medium">Disagree</button>
+                        <button onclick="recordAnswer(1)" class="w-full p-4 border border-gray-200 rounded-sm hover:border-brand-accent hover:bg-brand-tint transition text-left text-brand-primary font-medium">Strongly Disagree</button>
+                    </div>
+                </div>
+
+                <!-- STEP 4: RADAR RESULTS -->
+                <div id="step-results" class="hidden diagnostic-card">
+                    <div class="grid md:grid-cols-2 gap-12 items-center">
+                        <div>
+                            <h2 class="text-xs font-bold tracking-[0.2em] text-brand-accent uppercase mb-2">Your Profile</h2>
+                            <h3 id="res-archetype" class="font-serif text-3xl text-brand-primary mb-6">Determining Archetype...</h3>
+                            <div class="max-w-[320px] mx-auto md:mx-0">
+                                <canvas id="radarChart"></canvas>
+                            </div>
+                        </div>
+                        <div class="text-left">
+                            <p id="res-description" class="text-brand-body leading-relaxed mb-8 font-light italic border-l-2 border-brand-accent pl-6">Loading explanation...</p>
+                            <div class="flex flex-col gap-4">
+                                <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://ronaldrotich.com" target="_blank" class="text-center bg-[#0077b5] text-white py-3.5 rounded-sm text-sm font-bold tracking-wide flex items-center justify-center gap-2 hover:bg-[#005582] transition">
+                                    <i class="fa-brands fa-linkedin text-lg"></i> Share Result to LinkedIn
+                                </a>
+                                <a href="#contact" class="text-center bg-brand-primary text-white py-3.5 rounded-sm text-sm font-bold tracking-wide hover:bg-brand-accent transition shadow-lg shadow-brand-primary/20">
+                                    Book an Integration Session
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
@@ -407,13 +494,13 @@
         <div class="max-w-[1100px] mx-auto px-6 grid md:grid-cols-2 gap-16 items-center relative z-10">
             <div class="reveal-on-scroll">
                 <h2 class="text-xs font-bold tracking-[0.2em] text-brand-amber uppercase mb-4">New Venture — Launching Soon</h2>
-                <h3 class="font-serif text-5xl text-brand-primary mb-6">My Lampstand</h3>
+                <h3 class="font-serif text-5xl text-brand-primary mb-6">MY Lampstand</h3>
                 <h4 class="text-xl text-brand-body font-medium mb-6">The coaching room reaches hundreds.<br>An app can reach millions.</h4>
                 
                 <div class="text-brand-muted space-y-6 font-light leading-relaxed mb-8">
-                    <p>My Lampstand is built on a conviction I have held for years: <span class="font-medium text-brand-body">lasting habit change doesn't begin with behaviour — it begins with belief.</span></p>
+                    <p>MY Lampstand is built on a conviction I have held for years: <span class="font-medium text-brand-body">lasting habit change doesn't begin with behaviour — it begins with belief.</span></p>
                     <p>Most habit apps work on the surface. They track streaks, send reminders, and reward consistency. What they cannot do is reach the layer where behaviour actually originates — identity, belief, and the values that quietly govern every choice we make.</p>
-                    <p>My Lampstand bridges the wisdom of biblical principles with the science of how the mind and emotions actually work, guiding people through the inner shifts that make external change not just possible, but permanent.</p>
+                    <p>MY Lampstand bridges the wisdom of biblical principles with the science of how the mind and emotions actually work, guiding people through the inner shifts that make external change not just possible, but permanent.</p>
                     <p>It is the same architecture I apply in the executive coaching room — democratised, accessible, and built for the moment the world is in.</p>
                 </div>
                 
@@ -421,13 +508,13 @@
                     "What you do flows from who you believe you are."
                 </blockquote>
                 
-                <a href="mailto:info@ronaldrotich.com?subject=My Lampstand Waitlist" class="inline-block bg-brand-amber text-white px-8 py-3.5 rounded-sm font-bold tracking-wide hover:bg-yellow-600 transition shadow-lg shadow-brand-amber/30">Join the Waitlist</a>
-                <p class="text-xs text-brand-muted mt-3">Be the first to know when My Lampstand launches.</p>
+                <a href="mailto:info@ronaldrotich.com?subject=MY Lampstand Waitlist" class="inline-block bg-brand-amber text-white px-8 py-3.5 rounded-sm font-bold tracking-wide hover:bg-yellow-600 transition shadow-lg shadow-brand-amber/30">Join the Waitlist</a>
+                <p class="text-xs text-brand-muted mt-3">Be the first to know when MY Lampstand launches.</p>
             </div>
             
             <div class="relative flex justify-center reveal-on-scroll delay-100">
                 <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-brand-amber/10 blur-[80px] rounded-full -z-10"></div>
-                <img src="assets/lampstand-screen.png" alt="My Lampstand Interface" class="max-w-[300px] w-full rounded-[2rem] border-8 border-gray-900 shadow-2xl transform rotate-2 hover:rotate-0 transition duration-500">
+                <img src="assets/lampstand-screen.png" alt="MY Lampstand Interface" class="max-w-[300px] w-full rounded-[2rem] border-8 border-gray-900 shadow-2xl transform rotate-2 hover:rotate-0 transition duration-500">
             </div>
         </div>
     </section>
@@ -467,10 +554,11 @@
                 <div class="font-bold text-white mb-4 uppercase tracking-wider text-xs">Navigate</div>
                 <ul class="space-y-2">
                     <li><a href="#about" class="hover:text-white transition">About</a></li>
+                    <li><a href="#diagnostic" class="hover:text-white transition">Diagnostic</a></li>
                     <li><a href="#framework" class="hover:text-white transition">The Framework</a></li>
                     <li><a href="#services" class="hover:text-white transition">Work With Me</a></li>
                     <li><a href="#services" class="hover:text-white transition">Speaking</a></li>
-                    <li><a href="#lampstand" class="hover:text-brand-amber transition">My Lampstand</a></li>
+                    <li><a href="#lampstand" class="hover:text-brand-amber transition">MY Lampstand</a></li>
                     <li><a href="#contact" class="hover:text-white transition">Contact</a></li>
                 </ul>
             </div>
@@ -491,8 +579,9 @@
         </div>
     </section>
 
+    <!-- JavaScript Engine -->
     <script>
-        // Sticky Nav logic
+        // 1. Sticky Nav logic
         window.addEventListener('scroll', () => {
             const nav = document.getElementById('navbar');
             if (window.scrollY > 20) {
@@ -502,7 +591,7 @@
             }
         });
 
-        // Intersection Observer for scroll animations
+        // 2. Intersection Observer for scroll animations
         const observerOptions = {
             root: null,
             rootMargin: '0px',
@@ -513,7 +602,7 @@
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('is-visible');
-                    observer.unobserve(entry.target); // Only animate once
+                    observer.unobserve(entry.target);
                 }
             });
         }, observerOptions);
@@ -521,6 +610,104 @@
         document.querySelectorAll('.reveal-on-scroll').forEach(element => {
             observer.observe(element);
         });
+
+        // 3. Diagnostic Engine Data & Logic
+        const questions = [
+            { text: "When a critical decision is required, I often find myself endlessly analyzing data to avoid the 'risk' of a wrong move.", center: 'head' },
+            { text: "I sometimes feel like I'm wearing a 'mask'—defending corporate strategies that contradict my personal values.", center: 'heart' },
+            { text: "My team often struggles to keep up with my sudden pivots or high-velocity 'gut' decisions.", center: 'gut' },
+            { text: "I struggle to move from strategy to execution because I feel I don't have enough information yet.", center: 'head' },
+            { text: "I prioritize maintaining harmony in the room over speaking hard truths that need to be heard.", center: 'heart' },
+            { text: "I possess a high urge to 'just finish it' and move on, even if the strategic details aren't fully resolved.", center: 'gut' },
+            { text: "My strategic clarity disappears when I am under extreme emotional or social pressure.", center: 'head' },
+            { text: "I feel isolated from my leadership team, even when we are physically in the same room.", center: 'heart' },
+            { text: "I have noticed a wake of 'collateral damage'—burnt out staff or broken processes—following my successful wins.", center: 'gut' },
+            { text: "I often intellectualize my instincts, trying to find a logical reason for a feeling I can't explain.", center: 'head' },
+            { text: "I carry the emotional weight of the office home with me, struggling to disconnect from people's problems.", center: 'heart' },
+            { text: "I find myself making impulsive calls just to break the tension of waiting for others to catch up.", center: 'gut' },
+            { text: "I am more comfortable with spreadsheets and models than with the 'messy' emotional reality of my culture.", center: 'head' },
+            { text: "I check out mentally during high-stakes conflict to avoid the discomfort of a heavy chest or knot in the gut.", center: 'heart' },
+            { text: "I trust my instincts 100%, even when the data or my team suggests I am overlooking a critical flaw.", center: 'gut' }
+        ];
+
+        let currentQ = 0;
+        let scores = { head: 0, heart: 0, gut: 0 };
+
+        function handleSignal(type) {
+            document.getElementById('step-signal').classList.add('hidden');
+            document.getElementById('step-bridge').classList.remove('hidden');
+        }
+
+        function startFullDiagnostic() {
+            document.getElementById('step-bridge').classList.add('hidden');
+            document.getElementById('step-questions').classList.remove('hidden');
+            showQuestion();
+        }
+
+        function showQuestion() {
+            document.getElementById('q-text').innerText = questions[currentQ].text;
+            document.getElementById('q-progress-text').innerText = `Question ${currentQ + 1} of 15`;
+            document.getElementById('q-progress-bar').style.width = `${((currentQ + 1) / 15) * 100}%`;
+        }
+
+        function recordAnswer(val) {
+            scores[questions[currentQ].center] += val;
+            currentQ++;
+            if (currentQ < 15) {
+                showQuestion();
+            } else {
+                showResults();
+            }
+        }
+
+        function showResults() {
+            document.getElementById('step-questions').classList.add('hidden');
+            document.getElementById('step-results').classList.remove('hidden');
+            
+            const head = (scores.head / 25) * 100;
+            const heart = (scores.heart / 25) * 100;
+            const gut = (scores.gut / 25) * 100;
+
+            let arch = "";
+            let desc = "";
+
+            if (head >= 75 && heart < 60 && gut < 60) {
+                arch = "The Theoretical Architect";
+                desc = "Your strategy is impeccable, but it stays in the boardroom. You are intellectualising risks until the window of opportunity closes. You have the 'right' answer, but struggle to move the 'Gut' to execute.";
+            } else if (gut >= 75 && head < 60 && heart < 60) {
+                arch = "The Reactive Catalyst";
+                desc = "You are high-velocity and fearless. However, because your Gut is pulling the trigger alone, you often bypass strategic rigour. You likely feel others are 'too slow', but you are leaving collateral damage in your wake.";
+            } else if (heart >= 75 && head < 60 && gut < 60) {
+                arch = "The Empathetic Martyr";
+                desc = "You prioritize harmony over hard truths. You are carrying the emotional weight of the team while results slip. You know what needs to be said, but you check out mentally to avoid conflict.";
+            } else {
+                arch = "The Developing Integrated Leader";
+                desc = "You are working across multiple intelligence centers. Your architecture is evolving toward Absolute Clarity. You have the potential to make calls that are strategically sound and humanly resonant.";
+            }
+
+            document.getElementById('res-archetype').innerText = arch;
+            document.getElementById('res-description').innerText = desc;
+
+            const ctx = document.getElementById('radarChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'radar',
+                data: {
+                    labels: ['Head (Logic)', 'Heart (Values)', 'Gut (Instinct)'],
+                    datasets: [{
+                        label: 'Alignment Signal',
+                        data: [head, heart, gut],
+                        backgroundColor: 'rgba(107, 88, 200, 0.2)',
+                        borderColor: '#6B58C8',
+                        borderWidth: 2,
+                        pointBackgroundColor: '#3C2F82'
+                    }]
+                },
+                options: {
+                    scales: { r: { min: 0, max: 100, ticks: { display: false } } },
+                    plugins: { legend: { display: false } }
+                }
+            });
+        }
     </script>
 </body>
 </html>
