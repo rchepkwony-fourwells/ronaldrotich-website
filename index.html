@@ -45,18 +45,15 @@
     <style>
         body { color: #1A1A2E; background-color: #FFFFFF; }
         
-        /* Subtle Texture Overlay for Hero */
         .hero-texture {
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
         }
 
-        /* Sticky Nav Shadow */
         .scrolled-nav {
             box-shadow: 0 4px 20px rgba(0,0,0,0.05);
             border-bottom: 1px solid rgba(60, 47, 130, 0.1);
         }
 
-        /* Scroll Animations */
         .reveal-on-scroll {
             opacity: 0;
             transform: translateY(30px);
@@ -67,12 +64,10 @@
             transform: translateY(0);
         }
         
-        /* Delay utility for grids */
         .delay-100 { transition-delay: 100ms; }
         .delay-200 { transition-delay: 200ms; }
         .delay-300 { transition-delay: 300ms; }
 
-        /* Diagnostic Modal Transitions */
         .diagnostic-card {
             transition: all 0.5s ease;
         }
@@ -81,7 +76,7 @@
 <body class="antialiased font-sans selection:bg-brand-primary selection:text-white">
 
     <nav id="navbar" class="fixed w-full z-50 bg-white/95 backdrop-blur-md transition-all duration-300 border-b border-transparent py-4">
-        <div class="max-w-[1100px] mx-auto px-6 flex justify-between items-center">
+        <div class="max-w-[1100px] mx-auto px-6 flex justify-between items-center relative">
             <a href="#" class="flex flex-col group">
                 <span class="font-serif text-2xl font-bold text-brand-primary tracking-wide">Ronald Rotich</span>
                 <span class="text-[10px] font-semibold tracking-widest text-brand-muted uppercase mt-0.5">Human Performance Strategist</span>
@@ -96,11 +91,22 @@
                 <a href="#lampstand" class="hover:text-brand-accent transition text-brand-amber font-semibold"><i class="fa-solid fa-bolt mr-1"></i> MY Lampstand</a>
             </div>
 
-            <a href="#contact" class="hidden md:inline-block bg-brand-primary hover:bg-brand-accent text-white px-6 py-2.5 rounded-sm text-sm font-semibold tracking-wide transition shadow-lg shadow-brand-primary/20">
+            <a href="mailto:info@ronaldrotich.com?subject=Discovery%20Call%20Inquiry" class="hidden md:inline-block bg-brand-primary hover:bg-brand-accent text-white px-6 py-2.5 rounded-sm text-sm font-semibold tracking-wide transition shadow-lg shadow-brand-primary/20">
                 Book a Discovery Call
             </a>
             
-            <button class="lg:hidden text-brand-primary text-2xl"><i class="fa-solid fa-bars"></i></button>
+            <button id="mobile-menu-btn" class="lg:hidden text-brand-primary text-2xl focus:outline-none"><i class="fa-solid fa-bars"></i></button>
+        </div>
+        
+        <!-- Mobile Dropdown Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden absolute top-full left-0 w-full bg-white border-b border-gray-100 shadow-xl py-4 px-6 flex flex-col space-y-4">
+            <a href="#about" class="text-brand-body font-medium hover:text-brand-accent">About</a>
+            <a href="#diagnostic" class="text-brand-body font-medium hover:text-brand-accent">Diagnostic</a>
+            <a href="#framework" class="text-brand-body font-medium hover:text-brand-accent">The Framework</a>
+            <a href="#services" class="text-brand-body font-medium hover:text-brand-accent">Work With Me</a>
+            <a href="#speaking" class="text-brand-body font-medium hover:text-brand-accent">Speaking</a>
+            <a href="#lampstand" class="text-brand-amber font-semibold hover:text-yellow-600"><i class="fa-solid fa-bolt mr-1"></i> MY Lampstand</a>
+            <a href="mailto:info@ronaldrotich.com?subject=Discovery%20Call%20Inquiry" class="bg-brand-primary text-white text-center py-3 rounded-sm font-semibold tracking-wide mt-2">Book a Discovery Call</a>
         </div>
     </nav>
 
@@ -128,7 +134,7 @@
                 </p>
                 
                 <div class="flex flex-col sm:flex-row justify-center gap-4 mb-10">
-                    <a href="#services" class="bg-brand-primary text-white px-10 py-4 rounded-sm font-semibold tracking-wide hover:bg-brand-accent transition shadow-lg shadow-brand-primary/20">Work With Ronald</a>
+                    <a href="mailto:info@ronaldrotich.com?subject=Consulting%20Inquiry" class="bg-brand-primary text-white px-10 py-4 rounded-sm font-semibold tracking-wide hover:bg-brand-accent transition shadow-lg shadow-brand-primary/20">Work With Ronald</a>
                     <a href="#diagnostic" class="border-2 border-brand-primary/20 text-brand-primary px-10 py-4 rounded-sm font-semibold tracking-wide hover:bg-brand-tint transition">The Alignment Diagnostic</a>
                 </div>
                 
@@ -255,7 +261,7 @@
                                 <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://ronaldrotich.com" target="_blank" class="text-center bg-[#0077b5] text-white py-3.5 rounded-sm text-sm font-bold tracking-wide flex items-center justify-center gap-2 hover:bg-[#005582] transition">
                                     <i class="fa-brands fa-linkedin text-lg"></i> Share Result to LinkedIn
                                 </a>
-                                <a href="#contact" class="text-center bg-brand-primary text-white py-3.5 rounded-sm text-sm font-bold tracking-wide hover:bg-brand-accent transition shadow-lg shadow-brand-primary/20">
+                                <a href="mailto:info@ronaldrotich.com?subject=Alignment%20Integration%20Session" class="text-center bg-brand-primary text-white py-3.5 rounded-sm text-sm font-bold tracking-wide hover:bg-brand-accent transition shadow-lg shadow-brand-primary/20">
                                     Book an Integration Session
                                 </a>
                             </div>
@@ -387,7 +393,7 @@
 
             <div class="mt-20 text-center reveal-on-scroll delay-200">
                 <p class="font-serif text-2xl italic mb-6">Ready to build yours?</p>
-                <a href="#contact" class="inline-block bg-white text-brand-primary px-10 py-4 rounded-sm font-bold tracking-wide hover:bg-brand-tint transition shadow-xl">Work With Ronald</a>
+                <a href="mailto:info@ronaldrotich.com?subject=Consulting%20Inquiry" class="inline-block bg-white text-brand-primary px-10 py-4 rounded-sm font-bold tracking-wide hover:bg-brand-tint transition shadow-xl">Work With Ronald</a>
             </div>
         </div>
     </section>
@@ -407,69 +413,68 @@
                     <div class="absolute top-8 right-8 text-6xl font-serif text-brand-primary/5 font-bold group-hover:text-brand-primary/10 transition">01</div>
                     <h4 class="font-serif text-2xl font-bold text-brand-primary mb-4 relative z-10">Executive Coaching</h4>
                     <p class="text-brand-body font-light mb-8 leading-relaxed relative z-10">One-to-one, high-intensity coaching for senior leaders navigating complexity, transition, or scale. We work at the level where the real decisions are made — identity, values, instinct — not just skill. Built on mBIT, NLP, and Systemic Coaching methodologies.</p>
-                    <a href="mailto:info@ronaldrotich.com" class="text-brand-accent font-semibold text-sm hover:text-brand-primary transition">Enquire &rarr;</a>
+                    <a href="mailto:info@ronaldrotich.com?subject=Executive%20Coaching%20Inquiry" class="text-brand-accent font-semibold text-sm hover:text-brand-primary transition">Enquire &rarr;</a>
                 </div>
                 <div class="bg-[#FAFAFA] p-10 rounded-sm border border-gray-100 hover:border-brand-accent/30 hover:shadow-lg transition duration-300 relative group reveal-on-scroll delay-100">
                     <div class="absolute top-8 right-8 text-6xl font-serif text-brand-primary/5 font-bold group-hover:text-brand-primary/10 transition">02</div>
                     <h4 class="font-serif text-2xl font-bold text-brand-primary mb-4 relative z-10">Leadership Architecture</h4>
                     <p class="text-brand-body font-light mb-8 leading-relaxed relative z-10">For executive teams that need to move together. I work with the team as a living system — surfacing the hidden dynamics, aligning on collective vision, and building the internal conditions for sustained, high-stakes performance.</p>
-                    <a href="mailto:info@ronaldrotich.com" class="text-brand-accent font-semibold text-sm hover:text-brand-primary transition">Enquire &rarr;</a>
+                    <a href="mailto:info@ronaldrotich.com?subject=Leadership%20Architecture%20Inquiry" class="text-brand-accent font-semibold text-sm hover:text-brand-primary transition">Enquire &rarr;</a>
                 </div>
                 <div class="bg-[#FAFAFA] p-10 rounded-sm border border-gray-100 hover:border-brand-accent/30 hover:shadow-lg transition duration-300 relative group reveal-on-scroll">
                     <div class="absolute top-8 right-8 text-6xl font-serif text-brand-primary/5 font-bold group-hover:text-brand-primary/10 transition">03</div>
                     <h4 class="font-serif text-2xl font-bold text-brand-primary mb-4 relative z-10">Brand & Strategy Consulting</h4>
                     <p class="text-brand-body font-light mb-8 leading-relaxed relative z-10">For leaders and organisations whose external identity no longer reflects who they have become internally. I work across Purpose, Brand positioning, and Culture alignment — so that what you say, what you do, and how you are perceived are finally the same thing.</p>
-                    <a href="mailto:info@ronaldrotich.com" class="text-brand-accent font-semibold text-sm hover:text-brand-primary transition">Enquire &rarr;</a>
+                    <a href="mailto:info@ronaldrotich.com?subject=Strategy%20Consulting%20Inquiry" class="text-brand-accent font-semibold text-sm hover:text-brand-primary transition">Enquire &rarr;</a>
                 </div>
                 <div class="bg-[#FAFAFA] p-10 rounded-sm border border-gray-100 hover:border-brand-accent/30 hover:shadow-lg transition duration-300 relative group reveal-on-scroll delay-100">
                     <div class="absolute top-8 right-8 text-6xl font-serif text-brand-primary/5 font-bold group-hover:text-brand-primary/10 transition">04</div>
                     <h4 class="font-serif text-2xl font-bold text-brand-primary mb-4 relative z-10">Keynote Speaking & Facilitation</h4>
                     <p class="text-brand-body font-light mb-8 leading-relaxed relative z-10">For global conferences, leadership summits, and high-stakes team offsites. Ronald speaks and facilitates on the intersection of inner alignment and outer performance — with the authority of someone who has lived and applied it for 15 years across four continents.</p>
-                    <a href="mailto:info@ronaldrotich.com" class="text-brand-accent font-semibold text-sm hover:text-brand-primary transition">Enquire &rarr;</a>
+                    <a href="mailto:info@ronaldrotich.com?subject=Keynote%20Speaking%20Inquiry" class="text-brand-accent font-semibold text-sm hover:text-brand-primary transition">Enquire &rarr;</a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- NEW SECTION: THE STAGE ALIGNMENT -->
-    <section id="speaking" class="py-32 bg-brand-body text-white relative overflow-hidden">
-        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-brand-primary/20 rounded-full blur-[120px] -z-10 pointer-events-none"></div>
+    <section id="speaking" class="py-32 bg-brand-tint relative overflow-hidden">
         
         <div class="max-w-[1100px] mx-auto px-6 grid md:grid-cols-2 gap-16 items-center relative z-10">
             <div class="reveal-on-scroll">
                 <h2 class="text-xs font-bold tracking-[0.2em] text-brand-accent uppercase mb-4">The Art of Influence</h2>
-                <h3 class="font-serif text-4xl md:text-5xl text-white mb-8">The Stage Alignment</h3>
+                <h3 class="font-serif text-4xl md:text-5xl text-brand-primary mb-8">The Stage Alignment</h3>
                 
-                <blockquote class="font-serif text-2xl md:text-3xl text-brand-tint italic leading-snug mb-8 border-l-4 border-brand-accent pl-6">
+                <blockquote class="font-serif text-2xl md:text-3xl text-brand-primary italic leading-snug mb-8 border-l-4 border-brand-accent pl-6">
                     "When the Head, Heart, and Gut are aligned, public speaking ceases to be a performance. It becomes a transfer of conviction."
                 </blockquote>
                 
-                <p class="text-brand-tint/80 font-light leading-relaxed mb-8">
+                <p class="text-brand-body font-light leading-relaxed mb-8">
                     High-stakes communication is about more than just your slides. It is about the resonance you create when you step into the room. Drawing from years of coaching speakers for platforms like <strong>Dadasphere</strong> and <strong>Enactus Kenya</strong>, and backed by my recognition as a <strong>Toastmasters Award Winner</strong>, I help leaders strip away the performance and find the true signal of their message.
                 </p>
                 
-                <a href="#contact" class="inline-block border border-brand-accent text-brand-tint px-8 py-3.5 rounded-sm font-bold tracking-wide hover:bg-brand-accent hover:text-white transition shadow-lg">Book a Communication Audit</a>
+                <a href="mailto:info@ronaldrotich.com?subject=Communication%20Audit%20Inquiry" class="inline-block bg-brand-primary text-white px-8 py-3.5 rounded-sm font-bold tracking-wide hover:bg-brand-accent transition shadow-lg">Book a Communication Audit</a>
             </div>
             
-            <div class="bg-white/5 border border-white/10 p-8 md:p-10 rounded-sm reveal-on-scroll delay-100 shadow-2xl backdrop-blur-sm">
+            <div class="bg-white border border-gray-100 p-8 md:p-10 rounded-sm reveal-on-scroll delay-100 shadow-xl">
                 <h4 class="text-xs font-bold tracking-[0.2em] text-brand-accent uppercase mb-8 text-center md:text-left">The Room Readiness Check</h4>
                 
                 <div class="space-y-8">
                     <div>
-                        <h5 class="text-white font-bold mb-2 flex items-center gap-3"><span class="text-brand-accent font-serif text-xl italic">01.</span> The Clarity Check</h5>
-                        <p class="text-brand-tint/70 text-sm font-light leading-relaxed pl-8 border-l border-white/10">Can you articulate the core "What" and "Why" of your message in 30 seconds without relying on a single buzzword? A confused mind says no, and a confused audience stops listening.</p>
+                        <h5 class="text-brand-primary font-bold mb-2 flex items-center gap-3"><span class="text-brand-accent font-serif text-xl italic">01.</span> The Clarity Check</h5>
+                        <p class="text-brand-body text-sm font-light leading-relaxed pl-8 border-l border-gray-200">Can you articulate the core "What" and "Why" of your message in 30 seconds without relying on a single buzzword? A confused mind says no, and a confused audience stops listening.</p>
                     </div>
                     <div>
-                        <h5 class="text-white font-bold mb-2 flex items-center gap-3"><span class="text-brand-accent font-serif text-xl italic">02.</span> The Narrative Check</h5>
-                        <p class="text-brand-tint/70 text-sm font-light leading-relaxed pl-8 border-l border-white/10">Are you simply reading data points, or are you inviting the audience into a compelling, forward-looking vision? Data informs, but narrative moves people to action.</p>
+                        <h5 class="text-brand-primary font-bold mb-2 flex items-center gap-3"><span class="text-brand-accent font-serif text-xl italic">02.</span> The Narrative Check</h5>
+                        <p class="text-brand-body text-sm font-light leading-relaxed pl-8 border-l border-gray-200">Are you simply reading data points, or are you inviting the audience into a compelling, forward-looking vision? Data informs, but narrative moves people to action.</p>
                     </div>
                     <div>
-                        <h5 class="text-white font-bold mb-2 flex items-center gap-3"><span class="text-brand-accent font-serif text-xl italic">03.</span> The Presence Check</h5>
-                        <p class="text-brand-tint/70 text-sm font-light leading-relaxed pl-8 border-l border-white/10">Is your nervous system regulated enough to be fully present with the people in the room, or are you trapped in your own head trying to remember the next line?</p>
+                        <h5 class="text-brand-primary font-bold mb-2 flex items-center gap-3"><span class="text-brand-accent font-serif text-xl italic">03.</span> The Presence Check</h5>
+                        <p class="text-brand-body text-sm font-light leading-relaxed pl-8 border-l border-gray-200">Is your nervous system regulated enough to be fully present with the people in the room, or are you trapped in your own head trying to remember the next line?</p>
                     </div>
                     <div>
-                        <h5 class="text-white font-bold mb-2 flex items-center gap-3"><span class="text-brand-accent font-serif text-xl italic">04.</span> The Identity Check</h5>
-                        <p class="text-brand-tint/70 text-sm font-light leading-relaxed pl-8 border-l border-white/10">Are you speaking because you feel you have something to <em>prove</em>, or because you genuinely have something of value to <em>share</em>? The audience can always feel the difference.</p>
+                        <h5 class="text-brand-primary font-bold mb-2 flex items-center gap-3"><span class="text-brand-accent font-serif text-xl italic">04.</span> The Identity Check</h5>
+                        <p class="text-brand-body text-sm font-light leading-relaxed pl-8 border-l border-gray-200">Are you speaking because you feel you have something to <em>prove</em>, or because you genuinely have something of value to <em>share</em>? The audience can always feel the difference.</p>
                     </div>
                 </div>
             </div>
@@ -614,7 +619,7 @@
             <p class="text-lg text-brand-tint/80 mb-12 font-light max-w-[480px] mx-auto">
                 This is not a conversation for people who are comfortable where they are. It is a conversation for leaders who are ready to perform at the level their vision demands.
             </p>
-            <a href="mailto:info@ronaldrotich.com" class="inline-block bg-white text-brand-primary px-12 py-4 rounded-sm font-bold text-lg hover:bg-brand-tint transition shadow-2xl mb-12 tracking-wide">
+            <a href="mailto:info@ronaldrotich.com?subject=Discovery%20Call%20Inquiry" class="inline-block bg-white text-brand-primary px-12 py-4 rounded-sm font-bold text-lg hover:bg-brand-tint transition shadow-2xl mb-12 tracking-wide">
                 Book a Discovery Call
             </a>
             
@@ -668,7 +673,24 @@
 
     <!-- JavaScript Engine -->
     <script>
-        // 1. Sticky Nav logic
+        // 1. Mobile Menu Toggle Logic
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // Close the menu automatically when any link inside it is clicked
+            document.querySelectorAll('#mobile-menu a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+        }
+
+        // 2. Sticky Nav logic
         window.addEventListener('scroll', () => {
             const nav = document.getElementById('navbar');
             if (window.scrollY > 20) {
@@ -678,7 +700,7 @@
             }
         });
 
-        // 2. Intersection Observer for scroll animations
+        // 3. Intersection Observer for scroll animations
         const observerOptions = {
             root: null,
             rootMargin: '0px',
@@ -698,7 +720,7 @@
             observer.observe(element);
         });
 
-        // 3. Diagnostic Engine Data & Logic
+        // 4. Diagnostic Engine Data & Logic
         // Questions scrambled to prevent pattern recognition. Focus on Action Tendencies.
         const questions = [
             { text: "In a crisis, my immediate default is to take swift action and course-correct on the fly.", center: 'gut' },
